@@ -15,5 +15,5 @@ Working from home comes with a myriad of challenges that more and more people fi
  CEO | Priti Patel 
  PM | Madison Laughlin 
  CDO | Adam Pumputis 
- CEO | Nathan Magdalera 
+ CTO | Nathan Magdalera 
  Float | Yu-Won Youn 
