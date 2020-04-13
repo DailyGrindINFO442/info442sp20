@@ -7,7 +7,7 @@ Working from home comes with a myriad of challenges that more and more people fi
 
 ## Specifications
 
-**Features**
+**Neccessary Features**
 
 * **Scheduling**
     * **Add, Edit, & Remove**: Users have the ability to add, edit, and remove scheduled items. Scheduled items can be specified to a time block and be repeated throughout the calendar
@@ -31,3 +31,15 @@ Working from home comes with a myriad of challenges that more and more people fi
 * **Centralized Date**
     * **Day of Week**
     * **Date**
+
+**Extra Features**
+
+* **Reminders**
+* **Block Websites**
+    * **Option to completely block**
+    * **Option to block for certain amount of time or time range**
+    * **Option to limit to certain amount of time**
+    * **Default list of distracting amount of time**
+* **Motivational Media**
+* **Do Not Disturb**
+* **Incentives**
