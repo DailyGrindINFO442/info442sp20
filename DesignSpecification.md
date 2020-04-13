@@ -10,6 +10,9 @@ Working from home comes with a myriad of challenges that more and more people fi
 **Features**
 
 * **Scheduling**
+    * Add, Edit, & Remove
+    * Sync with Google Calendar (extensions, iCal)
+    * Extension: Manager add to calendar
 * **Built-In Breaks**
 * **Pre-Work Routines**
 * **To-Do List**
