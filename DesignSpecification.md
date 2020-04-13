@@ -10,10 +10,24 @@ Working from home comes with a myriad of challenges that more and more people fi
 **Features**
 
 * **Scheduling**
-    * Add, Edit, & Remove
-    * Sync with Google Calendar (extensions, iCal)
-    * Extension: Manager add to calendar
+    * **Add, Edit, & Remove**: Users have the ability to add, edit, and remove scheduled items. Scheduled items can be specified to a time block and be repeated throughout the calendar
+                               in a selected timeframe. 
+    * **Sync with Google Calendar (extensions, iCal)**: 
+    * **Extension: Manager add to calendar**
+    * **Add Repeated Events**
+    * **Send Reminders**
+    * **Change between day, week, month, and year views**: Users can change the view of their schedule, 
+    * **Switch between days, weeks, etc**
 * **Built-In Breaks**
+    * **Embeded Video & Audio Content**
+    * **Block user from navigating from that page until break timer ends**
 * **Pre-Work Routines**
+    * **Shows up on dashboard upon logging in**
 * **To-Do List**
+    * **Add, Edit, & Remove List items**
+    * **Extension: Manager add to to-do list**
+    * **Prioritize tasks (order from most to least important)**
+    * **Label Tasks (Different Projects, Different Jobs/Classes, etc.)**
 * **Centralized Date**
+    * **Day of Week**
+    * **Date**
