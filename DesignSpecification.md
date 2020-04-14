@@ -10,14 +10,14 @@ Working from home comes with a myriad of challenges that more and more people fi
 ### Neccessary Features 
 
 * **Scheduling**: One of the tabs that a user can navigate to from the navigation bar. Refers to setting up or viewing current schedule. 
-    * **Add, Edit, & Remove**: Users have the ability to add, edit, and remove scheduled items. Scheduled items can be specified to a time block and be repeated throughout the calendar
+    * **Add, Edit, & Remove** Users have the ability to add, edit, and remove scheduled items. Scheduled items can be specified to a time block and be repeated throughout the calendar
                                in a selected timeframe. Users will click either the add, edit, or remove button accordingly. 
-                               For adding, they can select the add button where a small meny
+                               1. For adding, they can select the add button where a small meny
                                will pop-up with details for the scheduled item. These items are the time frame, days, and whether to repeat the scheduled item. Users can confirm this but
                                pressing the confirm button, adding the item to the schedule. 
-                               For editing, users can click on an already existing menu item bringing them to the item details.
+                               1. For editing, users can click on an already existing menu item bringing them to the item details.
                                Within the item details, there is an edit button which the user can click, allowing them to edit to values for the item. 
-                               For removing, users will follow
+                               1. For removing, users will follow
                                a similar path to editing, except clicking on a remove button.
     * **Sync with Google Calendar (extensions, iCal)**: 
     * **Extension: Manager add to calendar**: Manager can add scheduled items to a users' account. 
