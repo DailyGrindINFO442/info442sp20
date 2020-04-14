@@ -19,8 +19,7 @@ Working from home comes with a myriad of challenges that more and more people fi
                                 pressing the confirm button, adding the item to the schedule. 
         * For editing, users can click on an already existing menu item bringing them to the item details.
                                 Within the item details, there is an edit button which the user can click, allowing them to edit to values for the item. 
-        * For removing, users will follow
-                                a similar path to editing, except clicking on a remove button.
+        * For removing, users will follow a similar path to editing, except clicking on a remove button.
 * **Sync with Google Calendar (extensions, iCal)**
     * Users should be able to connect their Google Calendar to our system
     * Google Calendar events should automatically sync onto their calendar on Daily Grind
@@ -36,16 +35,22 @@ Working from home comes with a myriad of challenges that more and more people fi
     * These reminders can be set for a day before, at the beginning of the day, an hour before, half an hour before, 15 minutes before, 10 minutes before, 5 minutes before, and/or
     at the start time.
                         
-* **Change between day, week, month, and year views**: Users can change the view of their schedule, displaying between the current day, week, month, and year. 
+* **Change between day, week, month, and year views**
+    * Users can change the view of their schedule, displaying between the current day, week, month, and year. 
+    * The calendar should display the daily view by default
 * **Built-In Breaks** 
     * **Embeded Video & Audio Content**
     * **Block user from navigating from that page until break timer ends**
+        * Once a user navigates to the breaks screen, they will be unable to navigate away from the page until the timer hits 0:00.
+        * Notify users when their break is nearly over & when it has finished
+            * Users should receive a notification on their dashboard and/or breaks screen once they have a minute of their break left.
+            * Users should receive a notification on their dashboard and/or breaks screen once their break has ended
 * **Pre-Work Routines** When the user logs into the application this will be the homge page or navigates to from the navigation bar. 
     * **Shows up on dashboard upon logging in**: A greeting to the user with the current day/week and scheduled items for the current day.
+    * **Embed divdeo & audio content**
+    * **Automatically add to front of user's to-do list**
 * **To-Do List**: The user can create a to-do list of immediate items that they need to complete without a defined time constraint. Accessible through the navigation bar menu.
-    * **Add, Edit, & Remove List items**: Users will be able to add, edit, and remove list items as needed. Similar to how scheduling operates, users will see their to-do list items
-    and can a
-    * **Extension: Manager add to to-do list**
+    * **Add, Edit, & Remove List items**: Users will be able to add, edit, and remove list items as needed.
     * **Prioritize tasks (order from most to least important)**: List items can be prioritized or given an attribute that determines its importance. Users can then filter
     their to-do list by items that have most importance to least importance.
     * **Label Tasks (Different Projects, Different Jobs/Classes, etc.)**: Users can give customizable tasks to their to-do list items and define tasks to their needs.
