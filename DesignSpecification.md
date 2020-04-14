@@ -9,7 +9,7 @@ Working from home comes with a myriad of challenges that more and more people fi
 
 ### Neccessary Features 
 
-### Scheduling : One of the tabs that a user can navigate to from the navigation bar. Refers to setting up or viewing current schedule. 
+#### Scheduling : One of the tabs that a user can navigate to from the navigation bar. Refers to setting up or viewing current schedule. 
 * **Add, Edit, & Remove**: Users have the ability to add, edit, and remove scheduled items. Scheduled items can be specified to a time block and be repeated throughout the calendar
                             in a selected timeframe. Users will click either the add, edit, or remove button accordingly. 
 * For adding, they can select the add button where a small meny
