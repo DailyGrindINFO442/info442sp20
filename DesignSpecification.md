@@ -10,16 +10,16 @@ Working from home comes with a myriad of challenges that more and more people fi
 ### Necessary Features
 
 **Home Page**
-![login page](img/Home_1.HEIC)
-![home page](img/Home_2.HEIC)
+![login page](img/Home_1.jpg)
+![home page](img/Home_2.jpg)
 
 **Sign-in, Settings, and Navbar**
-![sign-in page](img/signin)
-![settings page](img/settings1)
-![navbar](img/navbar)
+![sign-in page](img/signin.JPG)
+![settings page](img/settings1.jpeg)
+![navbar](img/navbar.JPG)
 
 * **Scheduling**: One of the tabs that a user can navigate to from the navigation bar. Refers to setting up or viewing current schedule.
-    * ![main calendar screen](img/calendar_priti) The main calendar screen
+    * ![main calendar screen](img/calendar_priti.jpeg) The main calendar screen
     * **Add, Edit, & Remove**: Users have the ability to add, edit, and remove scheduled items. Scheduled items can be specified to a time block and be repeated throughout the calendar
                                 in a selected timeframe. Users will click either the add, edit, or remove button accordingly.
         * Events should include a name, date, and time frame.
@@ -30,8 +30,8 @@ Working from home comes with a myriad of challenges that more and more people fi
         * For editing, users can click on an already existing menu item bringing them to the item details.
                                 Within the item details, there is an edit button which the user can click, allowing them to edit to values for the item.
         * For removing, users will follow a similar path to editing, except clicking on a remove button.
-        * ![add event screen](img/Schedule_2.HEIC) Adding a new event to your schedule
-        * ![previewing event](img/calendar2_priti) Previewing a selected event
+        * ![add event screen](img/Schedule_2.jpg) Adding a new event to your schedule
+        * ![previewing event](img/calendar2_priti.jpeg) Previewing a selected event
 * **Sync with Google Calendar**
     * Users should be able to connect their Google Calendar to our system
     * Google Calendar events should automatically sync onto their calendar on Daily Grind
@@ -52,23 +52,23 @@ Working from home comes with a myriad of challenges that more and more people fi
     * Users can change the view of their schedule, displaying between the current day, week, month, and year.
     * The calendar should display the daily view by default
 * **Built-In Breaks**
-    * ![schedule break](img/break2) Schedule a new break
+    * ![schedule break](img/break2.JPG) Schedule a new break
     * **Embedded Video & Audio Content**: Users can select preferred break activities, and they will be directly embedded into the system when applicable.
     * **Block user from navigating from that page until break timer ends**
         * Once a user navigates to the breaks screen, they will be unable to navigate away from the page until the timer hits 0:00.
-        * ![break notification](img/breaks1) Notification to start your break
+        * ![break notification](img/breaks1.JPG) Notification to start your break
         * Notify users when their break is nearly over & when it has finished
             * Users should receive a notification on their dashboard and/or breaks screen once they have a minute of their break left.
             * Users should receive a notification on their dashboard and/or breaks screen once their break has ended
 * **Pre-Work Routines** When the user logs into the application this will be the homge page or navigates to from the navigation bar.
-    * ![pre-work routine](img/routine) Example of a pre-work routine
+    * ![pre-work routine](img/routine.JPG) Example of a pre-work routine
     * **Shows up on dashboard upon logging in**: A greeting to the user with the current day/week and scheduled items for the current day.
     * **Embed video & audio content**: If a user's pre-work routine includes video or audio content, it will be directly embedded into the system.
     * **Automatically add to front of user's to-do list**: The aspects of the pre-work routine will be automatically added to the front of the user's to-do list each day.
 * **To-Do List**: The user can create a to-do list of immediate items that they need to complete without a defined time constraint. Accessible through the navigation bar menu.
-    * ![to-do list view](img/To-Do_1.HEIC)
+    * ![to-do list view](img/To-Do_1.jpg)
     * **Add, Edit, & Remove List items**: Users will be able to add, edit, and remove list items as needed.
-        * ![add a new task](img/To-Do_2.HEIC) Add a new task to your to-do list
+        * ![add a new task](img/To-Do_2.jpg) Add a new task to your to-do list
     * **Prioritize tasks (order from most to least important)**: List items can be prioritized or given an attribute that determines its importance. Users can then filter
     their to-do list by items that have most importance to least importance.
     * **Label Tasks (Different Projects, Different Jobs/Classes, etc.)**: Users can give customizable tasks to their to-do list items and define tasks to their needs.
