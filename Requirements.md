@@ -1,15 +1,12 @@
  Requirements
 
 ## System Requirements
-- *The Daily Grind* will be a web application made up of responsive web pages with < 1 second response times.  
-Web based application
-Responsive web pages with 1 second response times
-Screen size?
-System will be created with the React framework.
-All images will include alt labels.
-Aria labels will be included on assets.
-Google api will be used to sync user calendars with DailyGrind’s
-Data will be stored through Firebase.
+- *The Daily Grind* will be a web application made up of responsive web pages with < 1 second response times. 
+- The system will be created with the React framework.
+- All images will include alt labels.
+- Aria labels will be included on assets.
+- Google api will be used to sync user calendars with DailyGrind’s
+- Data will be stored through Firebase.
 
 ## Loading Screen & Home Page
 ![login page](img/Home_1.jpg)
