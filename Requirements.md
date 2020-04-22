@@ -143,3 +143,21 @@
         - At the bottom of the dialogue, there will be two buttons: confirm and cancel. 
         - Confirm will add the selected contacts to the preferred contacts list and cancel will close the dialogue without adding contacts to the list.
     - This list will only be visible to the user; it will not appear when other people view your profile.
+## Database
+- Adding/editing a scheduled event to the calendar will store the event information to Firebase, keeping store of the date(s) the event occurs, the name of the event, description of the event, and attendees of the event.
+- When a new user account is created, email and username will be stored to Firebase.
+- Adding/editing a pre-workout routine will store the pre-workout item to Firebase, storing information regarding whether it was fulfilled, the time it was scheduled, and if there was an option to snooze.
+- Adding/editing a to-do list item will store the item to Firebase, keeping store of the list item, the color of the item, and the tags associated with that to-do list item.
+- Adding/editing a break will keep store of the time that the break occurs in Firebase.
+- Deleting a scheduled event, pre-workout routine, break, to-do list item, and alert will remove that item from the Firebase database.
+
+## Dictionary 
+- Preferred Contacts: A collection of users that allow for easier method of contact.
+- Pre-work routines: A list holding action items that can be completed, intended to prime or prepare the user before working. 
+- Settings: Configurable options that can be changed and altered to change the functionality of the web application.
+- Schedule: A calendar/planner that holds information regarding events.
+- Theme: Dictates the look and style of Daily Grind, where the theme encompasses the colour scheme and aesthetics of the website. Used to personalize the user experience to their desired look.
+- Time-Sensitive Alert: A notification message that is sent whenever the event is close to occurring.
+- To-Do List: A list holding action items that need to be completed, where list items can be prioritized based on importance. 
+- Work Websites: Websites that have been blocked for a given duration to avoid distractions and maintain focus. 
+- Organization: A group of users who work together.
