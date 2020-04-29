@@ -13,7 +13,7 @@ class EventController {
     // be clicked on for an existing event
     // Post-Conditions: Displays any changes made
     // to event 
-    editEvent() {
+    editEvent(event) {
     }
 
     // Pre-Conditions: Required information must be
@@ -28,6 +28,6 @@ class EventController {
     // be clicked
     // Post-Conditions: Succesfully sends information
     // to remove from Firebase and to CalendarView
-    deleteEvent() {
+    deleteEvent(event) {
     }
 }
