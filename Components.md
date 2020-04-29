@@ -8,7 +8,7 @@
     - Resides in the client-side only
     - Does not communicate with other components
 - WelcomeView: first screen after opening web app
-    - This component displays the current date and site navigation
+    - This component displays the current date and day of the week along with site navigation
     - Resides in the client-side only
     - Does not communicate with other components
 - CalendarView: displays calendar event information 
@@ -54,10 +54,10 @@
     - Communicates with ToDoController
 
 ## Model 
-- DailyGrindModel: saves and returns information pertaining to user created events 
+- Communicates through Firebase
+- FirebaseController: saves and returns information pertaining to user created events 
     - Communicates with EventController, SignUpController, ToDoController, BreakController, and RoutineController to store/send information from requests made from components.
     - Resides on server-side
-    - Communicates through Firebase
     - Note: will not develop component ourselves
 
 ## Controller
