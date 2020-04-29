@@ -6,7 +6,7 @@ class ToDoController {
     retrieveListItem() {
     }
 
-    // Pre-Conditions: Required information ust
+    // Pre-Conditions: Required information must
     // be filled before creating list item
     // Post-Conditions: Succesfully creates
     // a list item and sends information to
@@ -16,7 +16,7 @@ class ToDoController {
 
     // Pre-Conditions: Edit button must be clicked
     // for an existing to-do list item
-    // Post-Conditions: Snedsany changes made
+    // Post-Conditions: Sends any changes made
     // to-do list item to ToDoListView and EditToDoListView
     editListItem(event) {
     }
