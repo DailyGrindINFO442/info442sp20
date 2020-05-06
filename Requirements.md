@@ -43,9 +43,13 @@
 ## Settings
 ![settings page](img/settings1.jpeg)
 - The navigation bar will have a button titled “Settings” that, when clicked, will take the user to the settings page.
+    - **Verification**: There will be a manual test to ensure that a) "Settings" appears in the navigation bar and that b) when selected the user is directed to the "Settings" page.
 - The settings page will allow users to toggle which applications have access and authority to connect to Daily Grind.
+    - **Verification**: There will be a visual inspection to ensure this appears on the user interface.
 - Applications that are in the authorization page will have a toggle form, where enabling the toggle will allow applications to connect to Daily Grind while disabling will prevent applications from connecting to Daily Grind.
+    - **Verification**: There will be a manual test to ensure that the toggle works on the user's end & changes the authorization on the system's end.
 - Account settings can be changed by clicking on the “My Account” tab under user settings, by clicking on the edit button, allowing for change to either name, email, organization, and theme.
+    - **Verification**: There will be a manual test to test that user data is stored to their account upon editing.
 
 ## Scheduling/Calendar
 ![main calendar screen](img/calendar_priti.jpeg)
@@ -118,29 +122,45 @@
 ## Pre-Work Routines
 ![pre-work routine](img/routine.JPG)
 - When the user logs in to the Daily Grind, the system will display the pre-work routine checklist.
+    - **Verification**: There will be a manual test to ensure the system properly loads to this screen.
 - When a user is logged in, their pre-work routine will be customizable.
+    - **Verification**: There will be a manual test to ensure routine can be changed & stored to account.
 - Each checklist item will have an unfilled “star” icon to the right of it; once selected, it will have a solid fill and will move to the top of the checklist.
+    - **Verification**: There will be a visual inspection of the user interface, as well as a manual test to ensure that changed routine order is saved to user account.
 - All pre-work routine items will allow users to snooze or set a start time
+    - **Verification**: There will be a manual test to ensure that both of these functions are working properly. For snooze, we will check that the system sends the alert again 5 minutes later. For start time, we will check that the system will store that data and that the alert is sent out at the proper time.
 - Users can add or delete items in their pre-work routine in the pre-work routine tab.
     - To add an item in the pre-work routine, users will click the “plus” button at the top of the tab, and fill in the task as needed.
+        - **Verification**: There will be a manual test to check that the added task was actually added to the user's pre-work routine.
     - To delete an item, users will select the item they want to delete by clicking on it. A menu will appear with a delete button as an option. If the user clicks on the delete button, they can either confirm or cancel. 
         - If confirm is selected, the pre-work item will be deleted.
         - If cancel is selected, the user can return to the previous page and the item will remain as it was before. 
+        - **Verification**: There will be a manual test to check that the deleted task was actually deleted when confirmed and that the action will not be committed if the user selects cancel.
 
 ## To-Do List
 ![to-do list view](img/To-Do_1.jpg)
 - The to-do list will have a button that when clicked, will add an item to the bottom of the to-do list.
+    - **Verification**: There will a manual test to ensure that a new to-do list item is added to the end of the list when that button is clicked.
 - The to-do list will be accessible by the navigation bar, where the To-Do list can be clicked to go to the to-do list page. 
+    - **Verification**: There will be a manual test to ensure that a) "To-Do List" appears in the navigation bar and that b) when selected the user is directed to the "To-Do List" page.
 - When an item is added, labels/tags and tags can be added to the item to categorize it.
     - Tags can be added to items by clicking the edit button, where the system will ask for input text of the desired tag name. 
+    - **Verification**: There will be a manual test to ensure that tags are being properly added to & stored with to-do list items.
 - When an item is added, colors can be added to an item to customize it.
     - Colors can be added to an item by clicking the appropriate color from a small menu of colors when an item is added.
+    - **Verification**: There will be a manual test to ensure that colors are being properly added to & stored with to-do list items.
 - When an item is added, there will be a drop-down menu to determine the importance of an item when that same menu is clicked, with a list of options ranging from least importance to most importance.
-- Items on the to-do list can be edited by clicking on the item, opening a small menu with fields to edit (color, text, tags, importance(, where clicking on the fields will open a menu with an input to edit.
+    - **Verification**: There will be a manual test to ensure that the drop-down menu works on the UI as expected and that the importance is properly stored with the to-do list item.
+- Items on the to-do list can be edited by clicking on the item, opening a small menu with fields to edit (color, text, tags, importance), where clicking on the fields will open a menu with an input to edit.
+    - **Verification**: There will be a manual test to ensure that any edited items are properly committed to the to-do list item.
 - Items can be deleted from the to-do list by clicking on the item on the list, opening a small menu with a delete button that users can confirm or cancel.
+    - **Verification**: There will be a manual test to ensure that deleted items will be removed from storage.
 - To-do list items can only consist of text elements/rendered as strings. 
+    - **Verification**: There will be a manual test to ensure that an error is thrown whenever a non-string is entered into the system.
 - Information for the to-do list will be stored within the database. Whenever a to-do list item is added, it will be stored in the database under the user's account.
+    - **Verification**: There will be a manual test to ensure that the user data is properly stored in the database by checking individual values.
 - Items on the to-do list can be ordered by level of importance by clicking the filter button on the top-right of the to-do list menu and clicking the appropriate filter. 
+    - **Verification**: There will be a visual inspection to ensure that this filtering process works properly.
 
 ## Alerts
 - The navigation bar will have a button titled “Alerts” that, when clicked, will take the user to the alerts page.
