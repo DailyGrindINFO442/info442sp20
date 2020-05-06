@@ -46,4 +46,4 @@ Name after each component is the owner of said component.
     * June 3: Homework 8, Triage is due at 3 PM
 
 ## Verification
-Please see Requirements.md for Verification information.
+Please see [Requirements.md](https://github.com/DailyGrindINFO442/info442sp20/blob/master/Requirements.md "Requirements Document") for Verification information.
