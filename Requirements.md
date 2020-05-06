@@ -1,4 +1,16 @@
  Requirements
+ 
+## Dictionary 
+- Preferred Contacts: A collection of users that allow for easier method of contact.
+- Pre-work routines: A list holding action items that can be completed, intended to prime or prepare the user before working. 
+- Settings: Configurable options that can be changed and altered to change the functionality of the web application.
+- Schedule: A calendar/planner that holds information regarding events.
+- Theme: Dictates the look and style of Daily Grind, where the theme encompasses the colour scheme and aesthetics of the website. Used to personalize the user experience to their desired look.
+- Time-Sensitive Alert: A notification message that is sent whenever the event is close to occurring.
+- To-Do List: A list holding action items that need to be completed, where list items can be prioritized based on importance. 
+- Work Websites: Websites that have been blocked for a given duration to avoid distractions and maintain focus. 
+- Organization: A group of users who work together.
+
 
 ## System Requirements
 - *The Daily Grind* will be a web application
@@ -43,13 +55,13 @@
 ## Settings
 ![settings page](img/settings1.jpeg)
 - The navigation bar will have a button titled “Settings” that, when clicked, will take the user to the settings page.
-    - **Verification**: There will be a manual test to ensure that a) "Settings" appears in the navigation bar and that b) when selected the user is directed to the "Settings" page.
+    - **Verification**: Manual testing will be completed by analyzing whether clicking upon the settings tab will take the user to the settings page. Successful testing if clicking the settings button leads to the settings page without anyissues. 
 - The settings page will allow users to toggle which applications have access and authority to connect to Daily Grind.
     - **Verification**: There will be a visual inspection to ensure this appears on the user interface.
 - Applications that are in the authorization page will have a toggle form, where enabling the toggle will allow applications to connect to Daily Grind while disabling will prevent applications from connecting to Daily Grind.
     - **Verification**: There will be a manual test to ensure that the toggle works on the user's end & changes the authorization on the system's end.
 - Account settings can be changed by clicking on the “My Account” tab under user settings, by clicking on the edit button, allowing for change to either name, email, organization, and theme.
-    - **Verification**: There will be a manual test to test that user data is stored to their account upon editing.
+    - **Verification**: There will be a manual test to test that user data is stored to their account upon editing. Automated testing by sending the information sent to Firebase database and retrieving the information back from Firebase and comparing the information sent/retrieved from Firebase and checking if they’re the same pieces of information.  
 
 ## Scheduling/Calendar
 ![main calendar screen](img/calendar_priti.jpeg)
@@ -228,14 +240,3 @@
     - **Verification**: Automated testing by returning the time that is sent to be stored in Firebase and then retrieving the time stored in Firebase and comparing it with the time sent to be stored in Firebase.
 - Deleting a scheduled event, pre-workout routine, break, to-do list item, and alert will remove that item from the Firebase database.
     - **Verification**: Automated tasting by returning the to-do list item that is deleted from firebase and comparing the item to the item that is selected to delete. 
-
-## Dictionary 
-- Preferred Contacts: A collection of users that allow for easier method of contact.
-- Pre-work routines: A list holding action items that can be completed, intended to prime or prepare the user before working. 
-- Settings: Configurable options that can be changed and altered to change the functionality of the web application.
-- Schedule: A calendar/planner that holds information regarding events.
-- Theme: Dictates the look and style of Daily Grind, where the theme encompasses the colour scheme and aesthetics of the website. Used to personalize the user experience to their desired look.
-- Time-Sensitive Alert: A notification message that is sent whenever the event is close to occurring.
-- To-Do List: A list holding action items that need to be completed, where list items can be prioritized based on importance. 
-- Work Websites: Websites that have been blocked for a given duration to avoid distractions and maintain focus. 
-- Organization: A group of users who work together.
