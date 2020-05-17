@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class HeaderView extends Component {
+export default class HeaderView extends Component {
     // Pre-Conditions: HeaderView is loaded
     // Post-Conditions: Displays DailyGrind branding information
     displayLogo() {
@@ -13,7 +13,8 @@ class HeaderView extends Component {
 
     render() {
         return (
-            <div>      
+            <div>  
+                <h1>Daily Grind</h1>    
             </div>
         )
     }

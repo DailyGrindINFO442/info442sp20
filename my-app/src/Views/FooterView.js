@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class FooterView extends Component {
+export default class FooterView extends Component {
     // Pre-Conditions: FooterView is loaded
     // Post-Conditions: Displays contact information of team
     displayFooter() {
@@ -8,7 +8,8 @@ class FooterView extends Component {
 
     render() {
         return (
-            <div>      
+            <div>  
+                <h1>footer</h1>    
             </div>
         )
     }
