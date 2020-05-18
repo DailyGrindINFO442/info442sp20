@@ -6,6 +6,28 @@ import FooterView from './Views/FooterView';
 import WelcomeView from './Views/WelcomeView';
 
 class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      user: null
+    };
+  }
+
+// uncomment when firebase is set up to adjust state based on sign in/out 
+  // componentDidMount(){
+  //   this.unregFunction = firebase.auth().onAuthStateChanged((curUser) => {
+  //     if (curUser) {
+  //       this.setState({
+  //         user: curUser.displayName
+  //       })
+  //     } else {
+  //       this.setState({
+  //         user: null
+  //       })
+  //     }
+  //   })
+  // }
+
   render() {
     let content = null;
 
@@ -16,7 +38,7 @@ class App extends Component{
     return (
       <div className="DailyGrind">
         <header className="header">
-          <HeaderView></HeaderView>
+          <HeaderView user={this.state.user}></HeaderView>
         </header>
   
         <main>

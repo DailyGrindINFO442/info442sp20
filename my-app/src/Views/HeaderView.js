@@ -12,9 +12,38 @@ export default class HeaderView extends Component {
     }
 
     render() {
+        let links = null;
+
+        if(!this.props.user){
+            links = (
+                <ul>
+                    <li>Calendar</li>
+                    <li>Breaks</li>
+                    <li>Pre-Work</li>
+                    <li>To-Do</li>
+                    <li>Alerts</li>
+                    <li>Settings</li>
+                    <li>Sign-In</li>
+                </ul>
+            )
+        } else {
+            links = (
+                <ul>
+                    <li>Calendar</li>
+                    <li>Breaks</li>
+                    <li>Pre-Work</li>
+                    <li>To-Do</li>
+                    <li>Alerts</li>
+                    <li>Settings</li>
+                    <li>Profile</li>
+                </ul>
+            )
+        }
+
         return (
-            <div>  
-                <h1>Daily Grind</h1>    
+            <div className="navBar">  
+                <p className="logo">Daily Grind</p>  
+                {links}
             </div>
         )
     }

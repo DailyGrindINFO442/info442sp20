@@ -9,7 +9,7 @@ export default class FooterView extends Component {
     render() {
         return (
             <div>  
-                <h1>footer</h1>    
+                <p>Created for INFO 442 Spring 2020</p>    
             </div>
         )
     }
