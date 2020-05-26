@@ -17,6 +17,9 @@ ul {
 
 li {
   float: right;
+}
+
+li a {
   display: block;
   color: #5cc0a5;
   text-align: center;
@@ -35,8 +38,10 @@ li {
   background-color: white;
 }
 
-.logo {
+.logo a{
   float: left;
+  color: black;
+  text-decoration: none!important;
 }
 
 .DailyGrind {

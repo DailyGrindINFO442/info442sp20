@@ -7,7 +7,7 @@ export default class WelcomeView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          date: new Date().toLocaleString()
+          date: new Date().toDateString()
         };
     }
 
@@ -23,8 +23,15 @@ export default class WelcomeView extends Component {
     }
 
     tick() {
+        var now = new Date();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var ampm = hour >= 12 ? 'PM' : 'AM';
+        hour = hour % 12;
+        hour = hour ? hour : 12; // the hour '0' should be '12'
+        minute = minute < 10 ? '0'+minute : minute;
         this.setState({
-            time: new Date().toLocaleString()
+            time: hour + ":" + minute + " " + ampm 
         });
     }
 
@@ -33,9 +40,10 @@ export default class WelcomeView extends Component {
             <div className="welcome">
                 <div className="welcomeText">
                     <h2>Today is</h2>
-                    <h1 className="Welcome-clock">
-                        {this.state.time}
+                    <h1>
+                        {this.state.date}
                     </h1>
+                    <h2>{this.state.time}</h2>
                 </div>
             </div>
         );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect, BrowserRouter} from 'react-router-dom';
 import './App.css';
 
 import HeaderView from './Views/HeaderView';
@@ -31,9 +32,16 @@ class App extends Component{
   render() {
     let content = null;
 
-    // use if/else blocks to change contnt to be rendered on the screen or import
-    // react-router-dom or other library for routing
-    content = (<WelcomeView></WelcomeView>)
+    content = (
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={WelcomeView}/>
+          {/*
+          Add more routes as views get made using react-router-dom 
+          eg: <Route path='/calendar' component={CalendarView}/>  */}
+        </Switch>
+      </BrowserRouter>
+    )
 
     return (
       <div className="DailyGrind">
