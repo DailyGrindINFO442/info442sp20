@@ -59,7 +59,7 @@ export default class ProfileView extends Component {
                         <td>{this.props.user.theme}</td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-allign: right">Edit</td>
+                        <td colspan="2" style="text-allign: right"><button>Edit</button></td>
                     </tr>
                 </table>
             </div>
@@ -153,9 +153,14 @@ export default class ProfileView extends Component {
                 </div>
             )
         }
+        //Preferred Contacts List (still needs to be done)
+        let preferredContacts = null;
         profile = (
-            {profileReq}
-            {profileOptional}
+            <div>{profileReq}</div>
+            <div>
+                {profileOptional}
+                {preferredContacts}
+            </div>
         )
         return profile;
     }
@@ -177,7 +182,7 @@ export default class ProfileView extends Component {
                 </div>
             )
         } else {
-            displayProfile()
+            return displayProfile();
         }
     }
 }
