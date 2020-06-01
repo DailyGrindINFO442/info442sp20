@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { FirebaseController } from './FirebaseController';
+import { storeEvent } from './FirebaseController';
 
 // Pre-Conditions: User must have entered email & password
 // Post-Conditions: Successfully log user into their account, 
@@ -8,9 +8,8 @@ import { FirebaseController } from './FirebaseController';
 export function signIn(email, password) {
     firebase.auth().signInWithCredential(email, password)
         .catch((err) => {
-            this.setState({ errorMessage: err.message })
+            return err.message
         })
-
 }
 
 
@@ -28,17 +27,11 @@ export function signUp(email, password, Fname, Lname) {
                 lastName: Lname
             }
 
-            let route = "users"
-            FirebaseController.storeEvent(userObject, route)
+            storeEvent(userObject, users)
         }).then(() => {
-            this.setState((state) => {
-                let user = {
-                    ...state.user
-                }
-                return { user: user }
-            })
+            return userObject
         }).catch((err) => {
-            this.setState({ errorMessage: err.message })
+            return err.message
         })
 }
 

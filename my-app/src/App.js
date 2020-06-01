@@ -5,6 +5,7 @@ import './App.css';
 import HeaderView from './Views/HeaderView';
 import FooterView from './Views/FooterView';
 import WelcomeView from './Views/WelcomeView';
+import CalendarView from './Views/CalendarView';
 
 class App extends Component{
   constructor(props){
@@ -35,7 +36,8 @@ class App extends Component{
     content = (
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={WelcomeView}/>
+          <Route exact path="/" component={WelcomeView}/>
+          <Route path="/calendar" component={CalendarView}/>
           {/*
           Add more routes as views get made using react-router-dom 
           eg: <Route path='/calendar' component={CalendarView}/>  */}

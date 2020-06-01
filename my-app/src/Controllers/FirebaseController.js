@@ -12,6 +12,8 @@ export function storeEvent(event, route) {
     rootPath.push(event)
 }
 
+
+
 // Pre-Conditions: Information must be requested
 // from a controller component
 // Requires: Event, information received as an object
@@ -34,7 +36,10 @@ export function sendEvent(event, route) {
 // Post-Conditions: Successfully updates proper component
 // in Firebase Database
 export function updateEvent(event, route) {
-
+    let rootPath = firebase.database().ref(route)
+    rootPath.update({
+        event
+    })
 }
 
 // Pre-conditions: Information must be request
@@ -42,7 +47,7 @@ export function updateEvent(event, route) {
 // Requires: Event, information received as an object
 // Post-Conditions: Returns removed event information
 // from Fireback back to relevant controller
-export function removeEvent(event, route) {
+export function removeEvent(route) {
     let rootPath = firebase.database().ref(route)
-    rootPath.remove(event)
+    rootPath.remove()
 }
