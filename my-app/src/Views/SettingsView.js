@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SettingsView extends Component {
+export default class SettingsView extends Component {
     constructor(props) {
         super(props);
     }
