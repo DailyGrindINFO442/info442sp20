@@ -68,3 +68,12 @@ li a {
 .sidebar {
   width: 20%;
 }
+
+div.unread {
+  border: 4px;
+  background-color: #FF9A9A;
+}
+
+div.read {
+  border: 2px;
+}

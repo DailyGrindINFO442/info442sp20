@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SettingsView extends Component {
+export default class SettingsView extends Component {
     constructor(props) {
         super(props);
     }
@@ -21,6 +21,14 @@ class SettingsView extends Component {
         var x = document.getElementById("theme");
         this.handleChange(x.options[x.selectedIndex].value);
     }
+
+    handleSubmitApps(event) {
+        event.preventDefault();
+        if(!document.getElementById("google").checked) {
+            //Should this log the user out of Google? Unsure of exactly what this setting
+            //should do if the user does not authorize Google.
+        }
+    }
     
     // Pre-Conditions: SettingsView is loaded
     // Post-Conditions: Displays user's settings
@@ -33,18 +41,18 @@ class SettingsView extends Component {
                     <tr>
                         <th>User Settings</th>
                     </tr> <tr>
-                        <td className="sidebarItem">My Account</td>
+                        <td className="sidebarItem"><button>My Account</button></td>
                     </tr> <tr>
-                        <td className="sidebarItem">Privacy and Safety</td>
+                        <td className="sidebarItem"><button>Privacy and Safety</button></td>
                     </tr> <tr>
-                        <td className="sidebarItem">Authorized Apps</td>
+                        <td className="sidebarItem"><button>My Account</button></td>
                     </tr> <tr>
-                        <td className="sidebarItem">Connections</td>
+                        <td className="sidebarItem"><button>My Account</button></td>
                     </tr>
                 </table>
             </div>
         )
-        //User account settings
+        //User account settings (still need to add profile photo submit)
         let accountSettings = (
             <div>
                 <form onSubmit={this.handleSubmitAccount}>
@@ -81,11 +89,23 @@ class SettingsView extends Component {
         )
         //Authorized app settings
         let authorizedAppSettings = (
-
+            <div>
+                <form onSubmit={this.handleSubmitApps}>
+                    <div>
+                        <label id="google">
+                            Google:
+                            <input type="checkbox" name="google" id="google"/>
+                        </label>
+                    </div>
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
         )
+        //Currently set to default view Account settings
         settings = (
             <div>
                 {settingsSidebar}
+                {accountSettings}
             </div>
         )
         return settings;
@@ -98,9 +118,14 @@ class SettingsView extends Component {
     }
 
     render() {
-        return (
-            <div>      
-            </div>
-        )
+        if(!this.props.user){
+            return (
+                <div>
+                    <p>Please log-in or sign-up in order to access your settings.</p>
+                </div>
+            )
+        } else {
+            return displaySettings();
+        }
     }
 }

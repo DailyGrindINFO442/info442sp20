@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 
 export default class ProfileView extends Component {
     constructor(props) {
@@ -40,6 +42,27 @@ export default class ProfileView extends Component {
         event.preventDefault();
         this.handleChange(this.state.officeHours);
     }
+
+    displayPreferredContacts(contact) {
+        return (
+            <div>
+                <table>
+                <tr>
+                        <td rowspan="2"><img src={contact.profilePhoto} alt="User's Profile Photo" /></td>
+                        <td>{contact.name}</td>
+                    </tr>
+                    <tr>
+                        <td>{contact.organization}</td>
+                    </tr>
+                </table>
+            </div>
+        )
+    }
+
+    // Dialogue to add users to preferred contacts
+    addToContacts() {
+
+    }
     
     // Pre-Conditions: ProfileView is loaded, user is logged in.
     // Post-Conditions: Displays user's profile
@@ -59,7 +82,9 @@ export default class ProfileView extends Component {
                         <td>{this.props.user.theme}</td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="text-allign: right"><button>Edit</button></td>
+                        <td colspan="2" style="text-allign: right"><span className="input-group-btn">
+                            <Link to="/settings" />Edit</Link>
+                        </span></td>
                     </tr>
                 </table>
             </div>
@@ -154,7 +179,16 @@ export default class ProfileView extends Component {
             )
         }
         //Preferred Contacts List (still needs to be done)
-        let preferredContacts = null;
+        let preferredContacts = (
+            <div>
+                <h1>Preferred Contacts</h1>
+            </div>
+        );
+        let contactList = this.props.user.preferredContacts;
+        for(let i = 0; i < contactList.length; i++) {
+            preferredContacts += this.displayPreferredContacts(contactList[i]);
+        }
+        preferredContacts += (<button onClick={this.addToContacts}>Add contacts</button>)
         profile = (
             <div>{profileReq}</div>
             <div>
