@@ -26,7 +26,7 @@ export default class HeaderView extends Component {
                     <li><NavLink to='todo'>To-Do</NavLink></li>
                     <li><NavLink to='prework'>Pre-Work</NavLink></li>
                     <li><NavLink to='breaks'>Breaks</NavLink></li>
-                    <li><NavLink to='/calendar'>Calendar</NavLink></li>
+                    <li><NavLink to="/calendar">Calendar</NavLink></li>
                 </ul>
             )
         } else {
@@ -45,10 +45,10 @@ export default class HeaderView extends Component {
 
         return (
             <div className="navBar">  
-                <BrowserRouter>
+                {/* <BrowserRouter> */}
                     <p className="logo"><NavLink to='/'>Daily Grind</NavLink></p> 
                     {links}
-                </BrowserRouter>
+                {/* </BrowserRouter> */}
             </div>
         )
     }

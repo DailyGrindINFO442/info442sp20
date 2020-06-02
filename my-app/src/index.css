@@ -13,5 +13,112 @@ code {
 }
 
 .calendar {
+  margin-top: 2rem;
+}
+
+.calendarButtons {
   margin-top: 7.5rem;
 }
+
+.modalBox {
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  /* overflow: auto; */
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modalForm {
+  background-color: #fefefe;
+  margin: 7.5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 500px; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
+  position: relative;
+}
+
+.modalContent {
+  /* margin-top: 15px; */
+  text-align: left;
+}
+
+.modalContent :nth-child(2){
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.modalContent input {
+  font-size: 20px;
+  border: none;
+  outline: none;
+}
+
+.modalContent p {
+  font-size: 20px;
+}
+
+.modalLabel {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+input[type="time"]::-webkit-clear-button {
+  display: none;
+}
+
+.closeModal {
+  padding: 0;
+  margin: 0;
+  width: 25px;
+  right: 5px;
+  top: 10px;
+  background-color: transparent;
+  color: black;
+  border-style: none;
+  position: absolute;
+}
+
+.save {
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  width: 50px;
+  right: 40px;
+  bottom: 20px;
+  background-color: transparent;
+  color: black;
+  border-style: none;
+  position: absolute;
+}
+
+.editButton {
+  font-size: 40px;
+  border-style: none;
+  background-color: transparent;
+}
+
+.removeButton {
+  font-size: 40px;
+  border-style:none;
+  background-color: transparent;
+}
+
+#eventName {
+  border-bottom-style: groove;
+}
+
+#textAreaDescription textarea {
+  outline: none;
+}
+
+/* #timeRange input[type="time"]::-webkit-clear-button {
+  display: none;
+  background-color: yellow;
+} */
