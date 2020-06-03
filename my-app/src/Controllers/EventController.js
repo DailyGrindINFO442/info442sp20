@@ -30,7 +30,8 @@ export function editEvent(event, id) {
 export function createEvent(event, id) {
     let eventObject = (event)
 
-    storeEvent(eventObject, "events/" + id)
+    let returnedID = storeEvent(eventObject, "events/" + id)
+    return returnedID
 }
 
 // Pre-Conditions: Delete button must
@@ -39,25 +40,14 @@ export function createEvent(event, id) {
 // to remove from Firebase and to CalendarView
 export function deleteEvent(array, event, id) {
     let eventObject = (event)
+    var newArray
 
     if (array.length <= 1) {
-        array = []
+        newArray = []
     } else {
-        var index
-        for (let i = 0; i <= array.length - 1; i++) {
-            if (array[i].id.toString() === event.toString()) {
-                // console.log("fOUND Ya")
-                // console.log(i)
-                index = i
-            }
-        }
-        array.splice(index, 1)
+        newArray = array.filter(key => key.id != event)
     }
 
-    // console.log(deleteArray)
-    // removeEvent(eventObject, "events/" + id)
-    // let object = {
-    //     array
-    // }
-    return array
+    removeEvent("events/" + id + "/" + event)
+    return newArray
 }

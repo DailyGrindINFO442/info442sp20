@@ -36,10 +36,16 @@ export function sendEvent(event, route) {
 // Post-Conditions: Successfully updates proper component
 // in Firebase Database
 export function updateEvent(event, route) {
-    let rootPath = firebase.database().ref(route)
-    rootPath.update({
-        event
-    })
+    if (route.substring(0, 7) === "routine") {
+        firebase.database().ref(route).update({
+            name: event
+        })
+    } else {
+        let rootPath = firebase.database().ref(route)
+        rootPath.update({
+            event
+        })
+    }
 }
 
 // Pre-conditions: Information must be request

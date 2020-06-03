@@ -6,6 +6,8 @@ export default class EditPreWorkView extends Component {
     constructor(props) {
         super(props)
 
+        this.listInfo = this.listInfo.bind(this)
+
         this.state = {
             checklistItems: new Map()
             // user: this.props.user.uid
@@ -49,6 +51,17 @@ export default class EditPreWorkView extends Component {
     }
 
     // Event Handlers
+
+    submitEditItem(e) {
+        e.preventDefault()
+        editRoutineItem(this.state.editItemName, this.props.user.uid, this.state.currentListItemID)
+        // window.location.reload()
+    }
+    
+    removeItem(e) {
+        e.preventDefault()
+        removeRoutineItem(this.props.user.uid, this.state.currentListItemID)
+    }
 
     addPreWorkItem(e) {
         e.preventDefault()
@@ -113,17 +126,28 @@ export default class EditPreWorkView extends Component {
             <div className="modalBox"
                 style={{display: this.state.editItemModal}}>
                 <div>
-                    <form className="modalForm">
+                    <form className="preWorkModalForm">
                         <button
                             onClick={(e) => this.closeEditItemModal(e)}
                             className="closeModal">
                                 X
                             </button>
-                        <div className="modalContent">
+                        <div className="preWorkModalContent">
                             <div>
-                                <input className="modalInput">
-
-                                </input>
+                                <input id="editName"
+                                    onChange={(e) => this.handleChange(e)}
+                                    placeholder="Edit Item Name"
+                                    name="editItemName"/>
+                            </div>
+                            <div id="saveRemoveButtons">
+                                <button
+                                    onClick={(e) => this.submitEditItem(e)}
+                                    className="editSave">Save</button>
+                                <button
+                                    onClick={(e) => this.removeItem(e)}
+                                    className="itemRemoveButton">
+                                        Remove
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -167,8 +191,8 @@ export default class EditPreWorkView extends Component {
 
     renderPreWorkList() {
         const list = Array.from(this.state.checklistItems.entries()).map((key) => {
-            console.log(key)
             return <PreworkItem
+                listInfo={this.listInfo}
                 id={key[0]}
                 name={key[1].name}
                 starred={key[1].starred}/>
@@ -190,19 +214,18 @@ export default class EditPreWorkView extends Component {
                             Pre-Work Items
                         </h2>
                         </div>
-                        <div>
-                        <button className="addItemButton"
-                            onClick={(e) => this.openAddItemModal(e)}>
-                            <span>&#43;</span> Add Item
-                        </button>
-                        </div>
-
                     </div>
                     <div>
                         <ul className="listGroup">
                             {checklistItems}
                         </ul>
                     </div>
+                    <div>
+                        <button className="addItemButton"
+                            onClick={(e) => this.openAddItemModal(e)}>
+                            <span>&#43;</span>
+                        </button>
+                        </div>
                 </div>
             </div>
         )
@@ -216,9 +239,20 @@ export default class EditPreWorkView extends Component {
 
     }
 
+    listInfo(e, id, name) {
+        e.preventDefault()
+        this.setState((state) => {
+            state.editItemModal = "block"
+            state.currentListItemID = id
+            state.currentListItemName = name
+            return state
+        })
+    }
+
     render() {
         let displayPreWork = this.displayPreWork()
         let addItemModal = this.addItemModal()
+        let editItemModal = this.editItemModal()
 
         return (
             <div className="editPreWorkView">
@@ -227,6 +261,7 @@ export default class EditPreWorkView extends Component {
                 </div>
                 <div>
                     {addItemModal}
+                    {editItemModal}
                 </div>
             </div>
         )
@@ -239,8 +274,10 @@ class PreworkItem extends Component {
 
     render() {
         return (
-            <div>
-                <li className="listpreWork"><button className="listButton">{this.props.name}</button></li>
+            <div className="editPreWorkListItem">
+                <li className="listpreWork"><button 
+                onClick={(e) => this.props.listInfo(e, this.props.id, this.props.name)}
+                className="listButton">{this.props.name}</button></li>
             </div>
         )
     }

@@ -5,12 +5,17 @@ export class EventView extends Component {
         console.log(this.props)
     }
 
+    componentDidUpdate() {
+        console.log(this.props)
+    }
+
     // Pre-Conditions: An event must be clicked on
     // Post-Conditions: Display event information that
     // was clicked
     displayEvent() {
-        let currentStart = this.props.currentStart !== "" ? this.props.currentStart : ""
+        let currentStart = this.props.currentStart !== "12:00 AM" ? this.props.currentStart : ""
         let currentEnd = this.props.currentEnd !== "" ? " - " + this.props.currentEnd : ""
+        let currentLocation = this.props.currentLocation !== "" ? this.props.currentLocation : "No Location"
 
         let content = (
             <div className="modalContent">
@@ -18,8 +23,12 @@ export class EventView extends Component {
                     <h2>{this.props.currentTitle}</h2>
                 </div>
                 <div>
+                    <p>{this.props.currentDate}</p>
+                </div>
+                <div>
                     <p>{currentStart}{currentEnd}</p>
                 </div>
+                <div><p><span>&#10022;</span>{currentLocation}</p></div>
                 <div>
                     <p>{this.props.currentDescription}</p>
                 </div>
@@ -52,6 +61,11 @@ export class EventView extends Component {
 
 export class EditEventView extends Component {
     componentDidMount() {
+        console.log(this.props)
+    }
+
+    componentDidUpdate(){
+        console.log(this.props)
     }
 
     displayEditEvent() {
@@ -61,14 +75,14 @@ export class EditEventView extends Component {
                     <input className="modalInput"
                         onChange={(e) => this.props.handleChange(e)}
                         id="eventName" placeholder="Event Name" type="text" name="eventName"
-                        value={this.props.currentTitle} />
+                         />
                 </div>
                 <div>
                     <label className="modalLabel"><b>Date</b></label>
                     <input className="modalInput"
                         onChange={(e) => this.props.handleChange(e)}
                         type="date" name="eventDate" 
-                        value={this.props.currentStart}/>
+                        />
                 </div>
                 <div id="timeRange">
                     <label className="modalLabel"><b>Time Range</b></label>
@@ -106,7 +120,9 @@ export class EditEventView extends Component {
                         type="checkbox" name="eventReminders" /><span>Yes</span>
                 </div>
                 <div>
-                    <button className="save">
+                    <button 
+                        onClick={(e) => this.props.updateCalendarEvent(e)}
+                        className="save">
                         <b>Save</b>
                     </button>
                 </div>

@@ -35,7 +35,6 @@ export default class PreWorkView extends Component {
                 let keys = Object.keys(info[this.props.user.uid])
                 
                 keys.map((key) => {
-                    console.log(key, info[this.props.user.uid][key])
                     itemMap.set(key, info[this.props.user.uid][key])
                 })
                 this.setState((state) => {

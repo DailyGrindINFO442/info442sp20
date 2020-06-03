@@ -23,12 +23,12 @@ export function createRoutineItem(event, id) {
 // Pre-Conditions: displayEditPreWork must have been called
 // Post-Conditions: Sends any changes made to PreWorView
 // and ToDoView
-export function editRoutineItem(event) {
+export function editRoutineItem(event, id, idItem) {
     let eventObject = event
     
     // Do anything we need to do to the event here
 
-    updateEvent(eventObject, "routine")
+    updateEvent(eventObject, "routine/" + id + "/" + idItem)
 }
 
 // Pre-Conditions: Delete button for
@@ -36,10 +36,10 @@ export function editRoutineItem(event) {
 // Post-Conditions: Successfully sends information
 // to remove from Firebase to FirebaseController
 // and to ToDoView & PreWorkView
-export function removeRoutineItem(event) {
+export function removeRoutineItem(event, id) {
     let eventObject = event
 
     // Do anything we need to do to the event here
 
-    removeEvent(event, "routine")
+    removeEvent("routine/" + event + "/" + id)
 }

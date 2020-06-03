@@ -48,6 +48,16 @@ code {
   text-align: left;
 }
 
+.preWorkModalForm {
+  background-color: #fefefe;
+  margin: 7.5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
+  position: relative;
+}
+
 .modalContent :nth-child(2){
   margin-top: 5px;
   margin-bottom: 5px;
@@ -60,6 +70,11 @@ code {
   outline: none;
 }
 
+.preWorkModalContent input {
+  border: none;
+  outline: none;
+}
+
 .modalContent p {
   font-size: 20px;
 }
@@ -68,6 +83,10 @@ code {
   font-size: 20px;
   margin-right: 20px;
 }
+
+/* .modalContent div {
+  text-align: center;
+} */
 
 input[type="time"]::-webkit-clear-button {
   display: none;
@@ -104,10 +123,32 @@ input[type="time"]::-webkit-clear-button {
   background-color: transparent;
 }
 
+
+
 .removeButton {
   font-size: 40px;
   border-style:none;
   background-color: transparent;
+}
+
+.editSave {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.itemRemoveButton {
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 20px;
 }
 
 .signInForm {
@@ -170,9 +211,9 @@ input[type="time"]::-webkit-clear-button {
   font-size: 30px;
 }
 
-div ul {
+/* div ul {
   margin: 0 auto;
-}
+} */
 
 .listGroup {
   float: none;
@@ -180,14 +221,29 @@ div ul {
   display: table;
 }
 
+.listGroup li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
 .listpreWork {
   float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: list-item;
+  width: 100%;
 }
 
 .listButton {
   border-style: none;
   background-color: transparent;
   font-size: 30px;
+}
+
+.editPreWorkListItem {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .starButton { 
@@ -199,11 +255,15 @@ div ul {
 
 .addItemButton {
   font-size: 30px;
-  border-radius: 40px;
+  border-radius: 50px;
   border-style: solid;
   border-color: green;
   border-width: 1px;
-  padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
 }
 
 .preWorkView, .editPreWorkView {
@@ -217,9 +277,28 @@ div ul {
 }
 
 .editPreWorkView {
+  border-style: solid;
+  border-width: 1px;
+  padding-bottom: 50px;
+  display: inline-block;
+}
+
+.editPreWorkView {
   margin-top: 10rem;
   background-color: transparent;
   float: none;
+}
+
+#saveRemoveButtons {
+  display: inline-block;
+}
+
+#editName {
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  float: none;
+  display: inline-block;
 }
 
 #createAccountNav {

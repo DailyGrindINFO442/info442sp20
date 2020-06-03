@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import firebase from 'firebase/app';
+
 
 // Views
 import { EventView, EditEventView } from './EventView.js'
@@ -27,6 +29,7 @@ export default class CalendarView extends Component {
 
         this.editViewEventModalButton = this.editViewEventModalButton.bind(this)
         this.removeCalendarEvent = this.removeCalendarEvent.bind(this)
+        this.addCalendarEvent = this.addCalendarEvent.bind(this)
         this.updateCalendarEvent = this.updateCalendarEvent.bind(this)
 
         this.state = {
@@ -42,6 +45,7 @@ export default class CalendarView extends Component {
     componentDidMount() {
         console.log("Mounted")
         console.log(this.props)
+        this.retrieveUserCalendar()
     }
 
     componentDidUpdate() {
@@ -53,7 +57,30 @@ export default class CalendarView extends Component {
     // Pre-Conditions: User switches to Calendar tab and has calendar events
     // Post-Conditions: Loads calendar information into state
     retrieveUserCalendar() {
-        retrieveEvent(this.props.user.uid)
+        let rootPath = firebase.database().ref('events')
+
+        rootPath.once('value', (snapshot) => {
+            let info = snapshot.val()
+
+            if (info) {
+                console.log(info)
+
+                let userEvent = info[this.props.user.uid]
+
+                console.log(userEvent)
+                let test = Object.keys(userEvent).map((key) => {
+                    console.log(userEvent[key].start)
+                    userEvent[key].start = Date.parse(userEvent[key].start)
+                    userEvent[key].end = Date.parse(userEvent[key].end)
+                    userEvent[key].id = key
+                    return userEvent[key]
+                })
+                this.setState((state) => {
+                    state.calendarEvents = test
+                    return state
+                })
+            }
+        })
     }
 
     // Helper Functions
@@ -89,6 +116,7 @@ export default class CalendarView extends Component {
         let eventTime1 = this.state.eventTime1 ? this.state.eventTime1 : ""
         
         let start = new Date(this.state.eventDate + 'T00:00:00')
+        // let start = new Date(this.state.eventDate)
         let end = ""
         let allDay = true
 
@@ -102,23 +130,21 @@ export default class CalendarView extends Component {
             end = new Date(this.state.eventDate + ' ' + this.state.eventTime2)
         }
 
-        let description = this.state.description ? this.state.description : ""
-
-        console.log(start)
-
-        let hashString = this.stringToHash(this.props.user.uid + this.state.eventName + start)
-
-        console.log(hashString)
+        let description = this.state.eventDescription ? this.state.eventDescription : ""
+        let location = this.state.eventLocation ? this.state.eventLocation : ""
 
         // Represents a single event object to add to Firebase
         let calendarObject = {
             title: this.state.eventName,
-            start: start,
-            end: end,
+            start: start.toString(),
+            end: end.toString(),
             description: description,
-            id: hashString,
-            allDay: true
+            allDay: allDay,
+            location: location
         }
+
+        // // Call controller
+        let returnedID = createEvent(calendarObject, this.props.user.uid)
 
         // Add 
         this.setState({
@@ -127,12 +153,14 @@ export default class CalendarView extends Component {
                 start: start,
                 end: end,
                 description: description,
-                id: hashString,
+                location: location,
+                id: returnedID,
                 allDay: allDay
             })
         })
-        // Call controller
-        createEvent(calendarObject, this.props.user.uid)
+
+        // // // Call controller
+        // createEvent(calendarObject, this.props.user.uid)
     }
 
     // Pre-Conditions: User clicks on edit button
@@ -142,6 +170,12 @@ export default class CalendarView extends Component {
         e.preventDefault()
         // Need to edit Firebase value
         // Remove this value from calendar object
+        // deleteEvent(calendar, this.state.currentID, this.props.user.uid)
+        // this.removeCalendarEvent(e)
+        // this.addCalendarEvent(e)
+        let calendarArray = this.state.calendarEvents
+        // let newArray = deleteEvent(calendarArray, this.state.currentID, this.props.user.uid)
+        console.log(this.state)
         // Re-add updated information
     }
 
@@ -152,30 +186,10 @@ export default class CalendarView extends Component {
         e.preventDefault()
         let calendarArray = this.state.calendarEvents
         let newArray = deleteEvent(calendarArray, this.state.currentID, this.props.user.uid)
-
-        // this.setState((state) => {
-        //     state.calendarEvents = newArray
-        //     return state
-        // })
-        this.test(newArray)
-        // if (calendarArray.length <= 1) {
-        //     calendarArray = []
-        // } else {
-        //     for (let i = 0; i <= calendarArray.length - 1; i++) {
-        //         if (calendarArray[i].id.toString() === this.state.currentID.toString()) {
-        //             calendarArray.splice(i, 1)
-
-        //             this.setState((state) => {
-        //                 state.calendarEvents = calendarArray
-        //                 return state
-        //             })
-        //         }
-        //     }
-        // }
-
+        this.updateArray(newArray)
     }
 
-    test(t) {
+    updateArray(t) {
         this.setState((state) => {
             state.calendarEvents = t
             return state
@@ -188,6 +202,7 @@ export default class CalendarView extends Component {
         let eventEnd = ""
 
         console.log(arg.event.start)
+        console.log(arg.event.end)
 
         let eventStart = formatDate(arg.event.start, {
             hour: 'numeric',
@@ -199,6 +214,7 @@ export default class CalendarView extends Component {
                 hour: 'numeric',
                 minute: '2-digit'
             })
+            console.log(eventEnd)
         }
 
         let formattedDate = formatDate(arg.event.start, {
@@ -208,10 +224,13 @@ export default class CalendarView extends Component {
             weekday: 'long'
         })
 
+        console.log(formattedDate)
+
         this.setState((state) => {
             state.currentDescription = arg.event.extendedProps.description
             state.currentTitle = arg.event.title
             state.currentAttendees = arg.event.extendedProps.attendees
+            state.currentLocation = arg.event.extendedProps.location
             state.currentDate = formattedDate
             state.currentStart = eventStart
             state.currentEnd = eventEnd
@@ -381,7 +400,6 @@ export default class CalendarView extends Component {
                                 <textarea maxlength="500" className="modalInput" placeholder="Enter a description"
                                     onChange={(e) => this.handleChange(e)}
                                     rows="4" cols="50"
-                                    value=""
                                     name="eventDescription" />
                             </div>
                             <div>
@@ -432,13 +450,14 @@ export default class CalendarView extends Component {
                                     X
                             </button>
                         <EventView
+                            {...this.state}
                             editViewEventModalButton = {this.editViewEventModalButton}
                             removeCalendarEvent = {this.removeCalendarEvent}
-                            currentDescription={this.state.currentDescription} 
-                            currentTitle = {this.state.currentTitle}
-                            currentAttendees = {this.state.currentAttendees}
-                            currentStart = {this.state.currentStart}
-                            currentEnd = {this.state.currentEnd} 
+                            // currentDescription={this.state.currentDescription} 
+                            // currentTitle = {this.state.currentTitle}
+                            // currentAttendees = {this.state.currentAttendees}
+                            // currentStart = {this.state.currentStart}
+                            // currentEnd = {this.state.currentEnd} 
                         />
                     </form>
                 </div>
@@ -461,6 +480,7 @@ export default class CalendarView extends Component {
                                 X
                         </button>
                         <EditEventView 
+                            updateCalendarEvent = {this.updateCalendarEvent}
                             handleChange = {this.handleChange}
                             currentDescription={this.state.currentDescription} 
                             currentTitle = {this.state.currentTitle}
