@@ -394,7 +394,7 @@ export default class CalendarView extends Component {
                             </div>
                             <div>
                                 <label className="modalLabel"><b>Location</b></label>
-                                <input className="modalInput" value=""
+                                <input className="modalInput"
                                     onChange={(e) => this.handleChange(e)}
                                     placeholder="Event Location" type="text" name="eventLocation" />
                             </div>
