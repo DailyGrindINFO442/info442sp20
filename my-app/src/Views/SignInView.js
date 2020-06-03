@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { signIn, signUp } from '../Controllers/SignUpController.js'
 import { NavLink } from 'react-router-dom';
+import firebase from 'firebase/app';
 
 export default class SignInView extends Component {
     constructor(props) {
@@ -9,7 +10,13 @@ export default class SignInView extends Component {
 
     handleSignIn = (event) => {
         event.preventDefault()
-        
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .catch((err) => {
+        this.setState({ 
+          errorMessage: err.message,
+          signInErr: "Login failed. Incorrect email or password." 
+        })
+      })
     }
 
     // Pre-Conditions: Event must have been sent
