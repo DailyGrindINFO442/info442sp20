@@ -24,7 +24,7 @@ export default class HeaderView extends Component {
                     <li><NavLink to='/settings'>Settings</NavLink></li>
                     <li><NavLink to='alerts'>Alerts</NavLink></li>
                     <li><NavLink to='todo'>To-Do</NavLink></li>
-                    <li><NavLink to='prework'>Pre-Work</NavLink></li>
+                    <li><NavLink to='/prework'>Pre-Work</NavLink></li>
                     <li><NavLink to='breaks'>Breaks</NavLink></li>
                     <li><NavLink to="/calendar">Calendar</NavLink></li>
                 </ul>
@@ -37,7 +37,7 @@ export default class HeaderView extends Component {
                     <li><NavLink to='/settings'>Settings</NavLink></li>
                     <li><NavLink to='alerts'>Alerts</NavLink></li>
                     <li><NavLink to='todo'>To-Do</NavLink></li>
-                    <li><NavLink to='prework'>Pre-Work</NavLink></li>
+                    <li><NavLink to='/prework'>Pre-Work</NavLink></li>
                     <li><NavLink to='breaks'>Breaks</NavLink></li>
                     <li><NavLink to='/calendar'>Calendar</NavLink></li>
                 </ul>

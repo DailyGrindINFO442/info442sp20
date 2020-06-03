@@ -9,7 +9,9 @@ import firebase from 'firebase/app';
 // received information to Firebase
 export function storeEvent(event, route) {
     let rootPath = firebase.database().ref(route)
-    rootPath.push(event)
+    let key = rootPath.push(event).getKey()
+    console.log(key)
+    return key
 }
 
 // Pre-Conditions: Information must be requested

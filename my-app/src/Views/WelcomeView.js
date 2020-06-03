@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PreWorkView from './PreWorkView';
+
 
 export default class WelcomeView extends Component {
 
@@ -44,6 +46,10 @@ export default class WelcomeView extends Component {
                         {this.state.date}
                     </h1>
                     <h2>{this.state.time}</h2>
+                </div>
+                <div className="preWorkView">
+                    <PreWorkView
+                        {...this.props}/>
                 </div>
             </div>
         );

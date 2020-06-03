@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { retrieveRoutineItem, createRoutineItem, editRoutineItem, removeRoutineItem } from '../Controllers/RoutineController'
 import firebase from 'firebase/app';
 
-export default class PreWorkView extends Component {
+export default class EditPreWorkView extends Component {
     constructor(props) {
         super(props)
 
@@ -13,10 +13,12 @@ export default class PreWorkView extends Component {
     }
 
     componentDidMount() {
+        console.log("Test!")
         this.retrievePreWorkItems()
     }
 
     componentDidUpdate() {
+        console.log(this.state)
     }
 
     // Mount Functions
@@ -165,6 +167,7 @@ export default class PreWorkView extends Component {
 
     renderPreWorkList() {
         const list = Array.from(this.state.checklistItems.entries()).map((key) => {
+            console.log(key)
             return <PreworkItem
                 id={key[0]}
                 name={key[1].name}
@@ -188,10 +191,10 @@ export default class PreWorkView extends Component {
                         </h2>
                         </div>
                         <div>
-                        {/* <button className="addItemButton"
+                        <button className="addItemButton"
                             onClick={(e) => this.openAddItemModal(e)}>
                             <span>&#43;</span> Add Item
-                        </button> */}
+                        </button>
                         </div>
 
                     </div>
@@ -218,7 +221,7 @@ export default class PreWorkView extends Component {
         let addItemModal = this.addItemModal()
 
         return (
-            <div className="preWorkView">
+            <div className="editPreWorkView">
                 <div>
                     {displayPreWork}
                 </div>
@@ -229,21 +232,15 @@ export default class PreWorkView extends Component {
         )
     }
 }
-
 class PreworkItem extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        let starred = this.props.starred ? 
-        <button 
-            // onClick={(e) => this.}
-            className="starButton"><span>&#9733;</span></button> : <button className="starButton"><span>&#9734;</span></button>
-
         return (
             <div>
-                <li className="listpreWork">{starred}<button className="listButton">{this.props.name}</button></li>
+                <li className="listpreWork"><button className="listButton">{this.props.name}</button></li>
             </div>
         )
     }

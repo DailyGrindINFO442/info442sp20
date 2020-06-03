@@ -132,7 +132,7 @@ export default class CalendarView extends Component {
             })
         })
         // Call controller
-        // createEvent(calendarObject, this.props.user.uid)
+        createEvent(calendarObject, this.props.user.uid)
     }
 
     // Pre-Conditions: User clicks on edit button
@@ -516,6 +516,7 @@ export default class CalendarView extends Component {
             <div>
                 <div className="calendarButtons">
                     <button
+                        className="addItemButton"
                         onClick={(e) => this.addEventModalButton(e)}>
                         <span>&#43;</span> Add Event
                     </button>

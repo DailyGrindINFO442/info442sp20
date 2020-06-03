@@ -12,6 +12,7 @@ import ProfileView from './Views/ProfileView';
 import AlertView from './Views/AlertView';
 import SignInView from './Views/SignInView';
 import SignUpView from './Views/SignUpView';
+import EditPreWorkView from './Views/EditPreWorkView';
 
 class App extends Component {
   constructor(props) {
@@ -60,12 +61,17 @@ class App extends Component {
 
     content = (
       <Switch>
-        <Route exact path="/" component={WelcomeView} />
+        <Route exact path="/" render={() => <WelcomeView
+          {...this.state}/>}/>
         <Route path="/calendar" render={() => <CalendarView 
           {...this.state}/>} />
         <Route path="/profile" component={ProfileView} />
         <Route path="/alerts" component={AlertView} />
         <Route path="/signin" component={SignInView} />
+        <Route path="/prework" render={() => <EditPreWorkView
+          {...this.state}
+          currentUser={this.state.user}/>}
+        />
         <Route path="/signup" render={() =>
           <SignUpView
             {...this.state}/>} />

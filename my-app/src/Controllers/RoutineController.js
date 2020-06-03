@@ -14,9 +14,10 @@ export function retrieveRoutineItem(id) {
 // Post-Conditions: Succesfully creates
 // a routine item and sends information to
 // ToDoView, PreWorkView, and FirebaseController
-export function createRoutineItem(event) {
+export function createRoutineItem(event, id) {
     let eventObject = event
-    storeEvent(eventObject, route)
+    let returnedID = storeEvent(eventObject, "routine/" + id)
+    return returnedID
 }
 
 // Pre-Conditions: displayEditPreWork must have been called
