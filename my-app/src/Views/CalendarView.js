@@ -32,9 +32,9 @@ export default class CalendarView extends Component {
         this.state = {
             calendarWeekends: true,
             calendarEvents: [
-                // initial event data
-                { title: "Event Now", start: new Date("2020-06-03" + 'T00:00:00'), allDay: true },
-                { title: "Test Date", start: test, description: "testtest", yuh: "hell yeah!", attendees: ["test1","test2"]}
+                // // initial event data
+                // { title: "Event Now", start: new Date("2020-06-03" + 'T00:00:00'), allDay: true },
+                // { title: "Test Date", start: test, description: "testtest", yuh: "hell yeah!", attendees: ["test1","test2"]}
             ]
         }
     }
@@ -104,8 +104,11 @@ export default class CalendarView extends Component {
 
         let description = this.state.description ? this.state.description : ""
 
-        let hashString = this.stringToHash(this.props.user.uid + this.state.eventName 
-            + this.state.eventStart)
+        console.log(start)
+
+        let hashString = this.stringToHash(this.props.user.uid + this.state.eventName + start)
+
+        console.log(hashString)
 
         // Represents a single event object to add to Firebase
         let calendarObject = {
@@ -128,9 +131,6 @@ export default class CalendarView extends Component {
                 allDay: allDay
             })
         })
-
-        console.log(this.calendarComponentRef)
-
         // Call controller
         // createEvent(calendarObject, this.props.user.uid)
     }
@@ -150,21 +150,44 @@ export default class CalendarView extends Component {
     // and removes information from Firebase
     removeCalendarEvent(e) {
         e.preventDefault()
-        // 
-        let eventID = this.stringToHash(this.props.user.uid + this.props.currentTitle 
-            + this.props.currentStart)
         let calendarArray = this.state.calendarEvents
+        let newArray = deleteEvent(calendarArray, this.state.currentID, this.props.user.uid)
 
-        let newArray = deleteEvent(calendarArray, eventID, this.props.user.uid)
+        // this.setState((state) => {
+        //     state.calendarEvents = newArray
+        //     return state
+        // })
+        this.test(newArray)
+        // if (calendarArray.length <= 1) {
+        //     calendarArray = []
+        // } else {
+        //     for (let i = 0; i <= calendarArray.length - 1; i++) {
+        //         if (calendarArray[i].id.toString() === this.state.currentID.toString()) {
+        //             calendarArray.splice(i, 1)
 
-        let id = this.calendarComponentRef.getEventById(eventID)
-        console.log(id)
+        //             this.setState((state) => {
+        //                 state.calendarEvents = calendarArray
+        //                 return state
+        //             })
+        //         }
+        //     }
+        // }
+
+    }
+
+    test(t) {
+        this.setState((state) => {
+            state.calendarEvents = t
+            return state
+        })
     }
 
     // Event Actions
 
     handleEventClick = arg => {
         let eventEnd = ""
+
+        console.log(arg.event.start)
 
         let eventStart = formatDate(arg.event.start, {
             hour: 'numeric',
@@ -173,10 +196,6 @@ export default class CalendarView extends Component {
 
         if (arg.event.end) {
             eventEnd = formatDate(arg.event.end, {
-                // month: "long",
-                // year: 'numeric',
-                // day: 'numeric',
-                // weekday: 'long'
                 hour: 'numeric',
                 minute: '2-digit'
             })
@@ -197,6 +216,7 @@ export default class CalendarView extends Component {
             state.currentStart = eventStart
             state.currentEnd = eventEnd
             state.eventModal = "block"
+            state.currentID = arg.event.id
             return state
         })
     }
@@ -497,7 +517,6 @@ export default class CalendarView extends Component {
                 <div className="calendarButtons">
                     <button
                         onClick={(e) => this.addEventModalButton(e)}>
-                        {/* <span style={{fontSize:"100px"}}>&#9734;</span> */}
                         <span>&#43;</span> Add Event
                     </button>
                 </div>

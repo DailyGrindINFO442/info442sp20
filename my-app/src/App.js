@@ -66,7 +66,9 @@ class App extends Component {
         <Route path="/profile" component={ProfileView} />
         <Route path="/alerts" component={AlertView} />
         <Route path="/signin" component={SignInView} />
-        <Route path="/signup" component={SignUpView} />
+        <Route path="/signup" render={() =>
+          <SignUpView
+            {...this.state}/>} />
         {/*
           Add more routes as views get made using react-router-dom 
           eg: <Route path='/calendar' component={CalendarView}/>  */}

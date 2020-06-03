@@ -37,8 +37,27 @@ export function createEvent(event, id) {
 // be clicked
 // Post-Conditions: Succesfully sends information
 // to remove from Firebase and to CalendarView
-export function deleteEvent(event, id) {
+export function deleteEvent(array, event, id) {
     let eventObject = (event)
 
-    removeEvent(eventObject, "events/" + id)
+    if (array.length <= 1) {
+        array = []
+    } else {
+        var index
+        for (let i = 0; i <= array.length - 1; i++) {
+            if (array[i].id.toString() === event.toString()) {
+                // console.log("fOUND Ya")
+                // console.log(i)
+                index = i
+            }
+        }
+        array.splice(index, 1)
+    }
+
+    // console.log(deleteArray)
+    // removeEvent(eventObject, "events/" + id)
+    // let object = {
+    //     array
+    // }
+    return array
 }
