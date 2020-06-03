@@ -38,19 +38,41 @@ export default class WelcomeView extends Component {
     }
 
     render() {
-        return (
-            <div className="welcome">
-                <div className="welcomeText">
+        let content = null
+
+        if (this.props.user) {
+            content = (
+                <div>
+ <div className="welcomeText">
+                <h2>Today is</h2>
+                <h1>
+                    {this.state.date}
+                </h1>
+                <h2>{this.state.time}</h2>
+            </div>
+            <div className="preWorkView">
+                <PreWorkView
+                    {...this.props}/>
+            </div>
+                </div>
+            )
+        } else {
+            content = (
+                <div>
+                                    <div className="welcomeText">
                     <h2>Today is</h2>
                     <h1>
                         {this.state.date}
                     </h1>
                     <h2>{this.state.time}</h2>
                 </div>
-                <div className="preWorkView">
-                    <PreWorkView
-                        {...this.props}/>
                 </div>
+            )
+        }
+
+        return (
+            <div className="welcome">
+                {content}
             </div>
         );
     }

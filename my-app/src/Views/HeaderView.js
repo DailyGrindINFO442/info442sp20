@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, BrowserRouter, NavLink} from 'react-router-dom';
+import firebase from 'firebase/app';
 
 import CalendarView from './CalendarView';
+
 
 export default class HeaderView extends Component {
     // Pre-Conditions: HeaderView is loaded
@@ -14,6 +16,15 @@ export default class HeaderView extends Component {
     displayNavbar() {
     }
 
+    handleSignOut = () => {
+        this.setState({ errorMessage: null });
+        firebase.auth().signOut()
+          .catch((err) => {
+            this.setState({ errorMessage: err.message })
+          })
+        window.location.reload()
+      }
+
     render() {
         let links = null;
 
@@ -21,18 +32,18 @@ export default class HeaderView extends Component {
             links = (
                 <ul>
                     <li><NavLink to='/signin'>Sign-In</NavLink></li>
-                    <li><NavLink to='/settings'>Settings</NavLink></li>
+                    {/* <li><NavLink to='/settings'>Settings</NavLink></li>
                     <li><NavLink to='alerts'>Alerts</NavLink></li>
                     <li><NavLink to='todo'>To-Do</NavLink></li>
                     <li><NavLink to='/prework'>Pre-Work</NavLink></li>
                     <li><NavLink to='breaks'>Breaks</NavLink></li>
-                    <li><NavLink to="/calendar">Calendar</NavLink></li>
+                    <li><NavLink to="/calendar">Calendar</NavLink></li> */}
                 </ul>
             )
         } else {
             links = (
                 <ul>
-                    <li><button>Sign Out</button></li>
+                    <li><button onClick={(e) => this.handleSignOut(e)}>Sign Out</button></li>
                     <li><NavLink to='/profile'>Profile</NavLink></li>
                     <li><NavLink to='/settings'>Settings</NavLink></li>
                     <li><NavLink to='alerts'>Alerts</NavLink></li>

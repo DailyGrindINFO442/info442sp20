@@ -51,7 +51,9 @@ export default class SignInView extends Component {
                             <input type="password" name="password" onChange={(e) => this.handleChange(e)}/>
                         </div>
                     </div>
-                    <button className="regButton">
+                    <button 
+                        onClick={(e) => this.handleSignIn(e)}
+                        className="regButton">
                         Login
                     </button>
                 </form>
