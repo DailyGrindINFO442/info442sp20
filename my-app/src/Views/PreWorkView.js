@@ -217,7 +217,7 @@ export default class PreWorkView extends Component {
         let addItemModal = this.addItemModal()
 
         return (
-            <div className="preWorkView">
+            <div>
                 <div>
                     {displayPreWork}
                 </div>

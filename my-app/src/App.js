@@ -13,6 +13,7 @@ import AlertView from './Views/AlertView';
 import SignInView from './Views/SignInView';
 import SignUpView from './Views/SignUpView';
 import EditPreWorkView from './Views/EditPreWorkView';
+import { WindowScrollController } from '@fullcalendar/core';
 
 class App extends Component {
   constructor(props) {
@@ -23,28 +24,15 @@ class App extends Component {
     };
   }
 
-  // uncomment when firebase is set up to adjust state based on sign in/out 
-  // componentDidMount(){
-  //   this.unregFunction = firebase.auth().onAuthStateChanged((curUser) => {
-  //     if (curUser) {
-  //       this.setState({
-  //         user: curUser.displayName
-  //       })
-  //     } else {
-  //       this.setState({
-  //         user: null
-  //       })
-  //     }
-  //   })
-  // }
-
   componentDidMount() {
     this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
       if (firebaseUser) { // If user is logged in
+        window.location="#"
         this.setState({
           user: firebaseUser
         })
       } else { // Log user out
+        window.location="#"
         this.setState({
           user: null
         })

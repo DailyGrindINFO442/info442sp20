@@ -59,28 +59,31 @@ export default class CalendarView extends Component {
     retrieveUserCalendar() {
         let rootPath = firebase.database().ref('events')
 
-        rootPath.once('value', (snapshot) => {
-            let info = snapshot.val()
-
-            if (info) {
-                console.log(info)
-
-                let userEvent = info[this.props.user.uid]
-
-                console.log(userEvent)
-                let test = Object.keys(userEvent).map((key) => {
-                    console.log(userEvent[key].start)
-                    userEvent[key].start = Date.parse(userEvent[key].start)
-                    userEvent[key].end = Date.parse(userEvent[key].end)
-                    userEvent[key].id = key
-                    return userEvent[key]
-                })
-                this.setState((state) => {
-                    state.calendarEvents = test
-                    return state
-                })
-            }
-        })
+        if (this.props.user) {
+            rootPath.once('value', (snapshot) => {
+                let info = snapshot.val()
+    
+                if (info) {
+                    console.log(info)
+    
+                    let userEvent = info[this.props.user.uid]
+    
+                    console.log(userEvent)
+                    let test = Object.keys(userEvent).map((key) => {
+                        console.log(userEvent[key].start)
+                        userEvent[key].start = Date.parse(userEvent[key].start)
+                        userEvent[key].end = Date.parse(userEvent[key].end)
+                        userEvent[key].id = key
+                        return userEvent[key]
+                    })
+                    this.setState((state) => {
+                        state.calendarEvents = test
+                        return state
+                    })
+                }
+            })
+        }
+        
     }
 
     // Helper Functions

@@ -28,26 +28,27 @@ export default class EditPreWorkView extends Component {
     retrievePreWorkItems() {
         let rootPath = firebase.database().ref('routine')
 
-        rootPath.once('value', (snapshot) => {
-            let info = snapshot.val()
-            console.log(info)
-            if (info) {
-                console.log(info[this.props.user.uid])
-                // let keys = Object.keys(info)
-                let itemMap = new Map()
-
-                let keys = Object.keys(info[this.props.user.uid])
-                
-                keys.map((key) => {
-                    console.log(key, info[this.props.user.uid][key])
-                    itemMap.set(key, info[this.props.user.uid][key])
-                })
-                this.setState((state) => {
-                    state.checklistItems = itemMap
-                    return state
-                })
-            }
-        })
+        if (this.props.user) {
+            rootPath.once('value', (snapshot) => {
+                let info = snapshot.val()
+                console.log(info)
+                if (info) {
+                    console.log(info[this.props.user.uid])
+                    // let keys = Object.keys(info)
+                    let itemMap = new Map()
+    
+                    let keys = Object.keys(info[this.props.user.uid])
+                    
+                    keys.map((key) => {
+                        itemMap.set(key, info[this.props.user.uid][key])
+                    })
+                    this.setState((state) => {
+                        state.checklistItems = itemMap
+                        return state
+                    })
+                }
+            })
+        }
     }
 
     // Event Handlers
@@ -55,12 +56,30 @@ export default class EditPreWorkView extends Component {
     submitEditItem(e) {
         e.preventDefault()
         editRoutineItem(this.state.editItemName, this.props.user.uid, this.state.currentListItemID)
-        // window.location.reload()
+        let newMap = this.state.checklistItems
+        console.log(newMap)
+        let item = newMap.get(this.state.currentListItemID)
+        console.log(item)
+        item.name = this.state.editItemName
+        newMap.set(this.state.currentListItemID, item)
+        this.setState((state) => {
+            state.checklistItems = newMap
+            state.editItemModal = "none"
+            return state
+        })
     }
     
     removeItem(e) {
         e.preventDefault()
         removeRoutineItem(this.props.user.uid, this.state.currentListItemID)
+        let newMap = this.state.checklistItems
+        newMap.delete(this.state.currentListItemID)
+
+        this.setState((state) => {
+            state.checklistItems = newMap
+            state.editItemModal = "none"
+            return state
+        })
     }
 
     addPreWorkItem(e) {
@@ -78,6 +97,7 @@ export default class EditPreWorkView extends Component {
 
         this.setState((state) => {
             this.state.checklistItems = checklistItems
+            this.state.addItemModal = "none"
             return state
         })
     }
@@ -117,6 +137,14 @@ export default class EditPreWorkView extends Component {
 
         changes[field] = value
         this.setState(changes)
+    }
+
+    closeEditItemModal(e) {
+        e.preventDefault()
+        this.setState((state) => {
+            state.editItemModal = "none";
+            return state
+        })
     }
 
     // Display Functions
@@ -162,15 +190,16 @@ export default class EditPreWorkView extends Component {
             <div className="modalBox"
                 style={{display: this.state.addItemModal}}>
                 <div>
-                    <form className="modalForm">
+                    <form className="preWorkModalForm">
                         <button
                             onClick={(e) => this.closeAddItemModal(e)} 
                             className="closeModal">
                             X
                         </button>
-                        <div className="modalContent">
+                        <div className="preWorkModalContent">
                             <div>
                                 <input className="modalInput" required
+                                    id="addName"
                                     onChange={(e) => this.handleChange(e)}
                                     placeholder="PreWork Name"
                                     type="text"
@@ -178,6 +207,7 @@ export default class EditPreWorkView extends Component {
                                 />
                             </div>
                             <button
+                                id="addItemButton"
                                 onClick={(e) => this.addPreWorkItem(e)}>
                                 Add
                             </button>

@@ -20,6 +20,10 @@ code {
   margin-top: 7.5rem;
 }
 
+.welcomeText {
+  font-size: 30px;
+}
+
 .modalBox {
   display: none;
   width: 100%;
@@ -139,6 +143,9 @@ input[type="time"]::-webkit-clear-button {
   padding: 10px;
   margin-top: 20px;
   margin-right: 20px;
+  color: white;
+  background-color: rgb(124, 189, 145);
+  border-style: none;
 }
 
 .itemRemoveButton {
@@ -149,6 +156,9 @@ input[type="time"]::-webkit-clear-button {
   font-size: 20px;
   padding: 10px;
   margin-top: 20px;
+  color: white;
+  background-color: rgb(124, 189, 145);
+  border-style: none;
 }
 
 .signInForm {
@@ -177,6 +187,7 @@ input[type="time"]::-webkit-clear-button {
 .preWorkView {
   text-align: center;
   margin-top: 10rem;
+  margin-left: 5rem;
 }
 
 .regButton {
@@ -221,6 +232,11 @@ input[type="time"]::-webkit-clear-button {
   display: table;
 }
 
+li {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
 .listGroup li {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -232,7 +248,7 @@ input[type="time"]::-webkit-clear-button {
   margin-top: 10px;
   margin-bottom: 10px;
   display: list-item;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .listButton {
@@ -256,8 +272,9 @@ input[type="time"]::-webkit-clear-button {
 .addItemButton {
   font-size: 30px;
   border-radius: 50px;
-  border-style: solid;
-  border-color: green;
+  border-style: none;
+  background-color: rgb(124, 189, 145);
+  color: white;
   border-width: 1px;
   padding-left: 30px;
   padding-right: 30px;
@@ -269,11 +286,13 @@ input[type="time"]::-webkit-clear-button {
 .preWorkView, .editPreWorkView {
   float: left;
   background-color: white;
+  border-color: grey;
   border-radius: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
   padding-bottom: 20px;
-  margin-top: 0;
+  margin-top: -10px;
+  margin-left: 20px;
 }
 
 .editPreWorkView {
@@ -287,6 +306,15 @@ input[type="time"]::-webkit-clear-button {
   margin-top: 10rem;
   background-color: transparent;
   float: none;
+}
+
+#headerSignOut {
+  border-radius: 30px;
+  border-style: none;
+  color: white;
+  background-color: rgb(124, 189, 145);
+  padding: 20px;
+  font-size: 30px;
 }
 
 #saveRemoveButtons {
@@ -311,6 +339,22 @@ input[type="time"]::-webkit-clear-button {
   text-align: center;
   font-size: 25px;
   margin-top: 100px;
+}
+
+#addName {
+  font-size: 30px;
+  width: 100%;
+}
+
+#addItemButton{
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  width: 100px;
+  border-style: none;
+  color: white;
+  background-color: rgb(124, 189, 145);
+  margin-top: 20px;
 }
 
 #eventName {
