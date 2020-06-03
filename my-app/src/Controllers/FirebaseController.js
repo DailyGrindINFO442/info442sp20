@@ -12,8 +12,6 @@ export function storeEvent(event, route) {
     rootPath.push(event)
 }
 
-
-
 // Pre-Conditions: Information must be requested
 // from a controller component
 // Requires: Event, information received as an object

@@ -13,24 +13,23 @@ export function signIn(email, password) {
 }
 
 
-// Pre-Conditions: User must have entered email, password, and name
+// Pre-Conditions: User must have entered email and password
 // Post-Conditions: Successfully creates user account with given
 // information or sends error for incomplete form
-export function signUp(email, password, Fname, Lname) {
+export function signUp(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            let firebaseUser = userCredential.user;
+        .then(function() {
+            var user = firebase.auth().currentUser
 
             let userObject = {
-                email: firebaseUser.email,
-                firstName: Fname,
-                lastName: Lname
+                email: user.email,
+                uid: user.uid.toString()
             }
 
-            storeEvent(userObject, users)
-        }).then(() => {
+            storeEvent(userObject, "users/" + user.uid.toString())
             return userObject
         }).catch((err) => {
+            console.log(err.message)
             return err.message
         })
 }

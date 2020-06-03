@@ -9,6 +9,7 @@ export class EventView extends Component {
     // Post-Conditions: Display event information that
     // was clicked
     displayEvent() {
+        let currentStart = this.props.currentStart !== "" ? this.props.currentStart : ""
         let currentEnd = this.props.currentEnd !== "" ? " - " + this.props.currentEnd : ""
 
         let content = (
@@ -17,7 +18,7 @@ export class EventView extends Component {
                     <h2>{this.props.currentTitle}</h2>
                 </div>
                 <div>
-                    <p>{this.props.currentStart}{currentEnd}</p>
+                    <p>{currentStart}{currentEnd}</p>
                 </div>
                 <div>
                     <p>{this.props.currentDescription}</p>
@@ -28,6 +29,7 @@ export class EventView extends Component {
                     <span>&#9998;</span>
                 </button>
                 <button
+                    onClick={(e) => this.props.removeCalendarEvent(e)}
                     className="removeButton">
                     <span>&#128465;</span>
                 </button>

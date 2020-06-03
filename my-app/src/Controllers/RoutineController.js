@@ -4,10 +4,8 @@ import { sendEvent, updateEvent, storeEvent, removeEvent } from './FirebaseContr
 // requested from FirebaseController
 // Post-Conditions: Succesfully retrieves event
 // and returns a routine item
-export function retrieveRoutineItem(event, id) {
-    let eventObject = event
-
-    let info = sendEvent(eventObject, "routine/" + id)
+export function retrieveRoutineItem(id) {
+    let info = sendEvent("routine/" + id)
     return info
 }
 

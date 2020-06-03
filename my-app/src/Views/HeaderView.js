@@ -32,6 +32,7 @@ export default class HeaderView extends Component {
         } else {
             links = (
                 <ul>
+                    <li><button>Sign Out</button></li>
                     <li><NavLink to='/profile'>Profile</NavLink></li>
                     <li><NavLink to='/settings'>Settings</NavLink></li>
                     <li><NavLink to='alerts'>Alerts</NavLink></li>

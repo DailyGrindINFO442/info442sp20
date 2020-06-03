@@ -4,10 +4,10 @@ import { sendEvent, updateEvent, storeEvent, removeEvent } from './FirebaseContr
 // from a controller and information must be in object form
 // Post-Conditions: Succesfully retrives event and
 // stores it in the state
-export function retrieveEvent(event, id) {
-    let eventObject = (event)
+export function retrieveEvent(id) {
+    // let eventObject = (event)
 
-    let info = sendEvent(eventObject, "events/" + id)
+    let info = sendEvent("events/" + id)
 
     return info
 }

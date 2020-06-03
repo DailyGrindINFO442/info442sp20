@@ -83,7 +83,7 @@ export default class ProfileView extends Component {
                     </tr>
                     <tr>
                         <td colspan="2" style="text-allign: right"><span className="input-group-btn">
-                            <Link to="/settings" />Edit</Link>
+                            <Link to="/settings">Edit</Link>
                         </span></td>
                     </tr>
                 </table>
@@ -92,13 +92,13 @@ export default class ProfileView extends Component {
         let profileOptional = null;
         //Displaying job title
         if(this.props.user.jobTitle){
-            profileOptional + (
+            profileOptional = (
                 <div>
                     <p>Job title: {this.props.user.jobTitle}</p>
                 </div>
             )
         } else {
-            profileOptional + (
+            profileOptional = (
                 <div>
                     <form onSubmit={this.handleSubmitJT}>
                         <div>
@@ -114,13 +114,13 @@ export default class ProfileView extends Component {
         }
         //Displaying user's status
         if(this.props.user.status){
-            profileOptional + (
+            profileOptional = (
                 <div>
                     <p>Status: {this.props.user.status}</p>
                 </div>
             )
         } else {
-            profileOptional + (
+            profileOptional = (
                 <div>
                     <form onSubmit={this.handleSubmitS}>
                         <div>
@@ -136,13 +136,13 @@ export default class ProfileView extends Component {
         }
         //Displaying user's bio
         if(this.props.user.bio){
-            profileOptional + (
+            profileOptional = (
                 <div>
                     <p>Status: {this.props.user.bio}</p>
                 </div>
             )
         } else {
-            profileOptional + (
+            profileOptional = (
                 <div>
                     <form onSubmit={this.handleSubmitBio}>
                         <div>
@@ -158,13 +158,13 @@ export default class ProfileView extends Component {
         }
         //Displaying user's office hours
         if(this.props.user.status){
-            profileOptional + (
+            profileOptional = (
                 <div>
                     <p>Office Hours: {this.props.user.officeHours}</p>
                 </div>
             )
         } else {
-            profileOptional + (
+            profileOptional = (
                 <div>
                     <form onSubmit={this.handleSubmitOH}>
                         <div>
@@ -190,10 +190,12 @@ export default class ProfileView extends Component {
         }
         preferredContacts += (<button onClick={this.addToContacts}>Add contacts</button>)
         profile = (
-            <div>{profileReq}</div>
             <div>
-                {profileOptional}
-                {preferredContacts}
+                <div>{profileReq}</div>
+                <div>
+                    {profileOptional}
+                    {preferredContacts}
+                </div>
             </div>
         )
         return profile;
@@ -209,6 +211,8 @@ export default class ProfileView extends Component {
     }
 
     render() {
+        let displayProfile = this.displayProfile()
+
         if(!this.props.user){
             return (
                 <div>
@@ -216,7 +220,7 @@ export default class ProfileView extends Component {
                 </div>
             )
         } else {
-            return displayProfile();
+            return {displayProfile};
         }
     }
 }

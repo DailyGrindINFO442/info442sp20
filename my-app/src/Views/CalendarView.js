@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { EventView, EditEventView } from './EventView.js'
 
 // Controllers
-import { retrieveEvent } from '../Controllers/EventController.js'
+import { retrieveEvent, createEvent, editEvent, deleteEvent } from '../Controllers/EventController.js'
 
 import FullCalendar from '@fullcalendar/react'
 import { formatDate } from '@fullcalendar/core'
@@ -21,45 +21,164 @@ export default class CalendarView extends Component {
     constructor(props) {
         super(props)
 
-        let calendarComponentRef = React.createRef();
+        this.calendarComponentRef = React.createRef();
         let test = new Date('June 2, 2020')
         let test2 = new Date('June 3, 2020')
 
         this.editViewEventModalButton = this.editViewEventModalButton.bind(this)
-        // this.handleChange = this.handleChange.bind(this)
-
-        // this.handleChange = this.props.handleChange.bind(this)
+        this.removeCalendarEvent = this.removeCalendarEvent.bind(this)
+        this.updateCalendarEvent = this.updateCalendarEvent.bind(this)
 
         this.state = {
             calendarWeekends: true,
             calendarEvents: [
                 // initial event data
-                // { title: "Event Now", start: new Date() },
-                { title: "Test Date", start: test, description: "testtest", yuh: "hell yeah!", attendees: ["test1","test2"], end: test2 }
-            ],
-            eventClick: function(info) {
-                console.log(info)
-            }
+                { title: "Event Now", start: new Date("2020-06-03" + 'T00:00:00'), allDay: true },
+                { title: "Test Date", start: test, description: "testtest", yuh: "hell yeah!", attendees: ["test1","test2"]}
+            ]
         }
     }
 
     componentDidMount() {
         console.log("Mounted")
+        console.log(this.props)
     }
 
     componentDidUpdate() {
         console.log(this.state)
     }
 
+    // Initliazation Functions
+
+    // Pre-Conditions: User switches to Calendar tab and has calendar events
+    // Post-Conditions: Loads calendar information into state
+    retrieveUserCalendar() {
+        retrieveEvent(this.props.user.uid)
+    }
+
+    // Helper Functions
+
+    // Pre-Conditions: String must have been
+    // sent to hash
+    // Post-Condition: Returns string as a hashed
+    // string
+    stringToHash(string) {  
+        var hash = 0; 
+          
+        if (string.length == 0) return hash; 
+          
+        for (let i = 0; i < string.length; i++) { 
+            let char = string.charCodeAt(i); 
+            hash = ((hash << 5) - hash) + char; 
+            hash = hash & hash; 
+        } 
+          
+        return hash; 
+    } 
+
+
+    // Controller Functions
+
+    // Pre-Conditions: "Save" button is clicked with all required
+    // fields filled out
+    // Post-Conditions: Creates a calendar event and adds it to
+    // to the calendar client-side and sends information to Firebase
+    // to store/add
+    addCalendarEvent(e) {
+        e.preventDefault()
+        let eventTime1 = this.state.eventTime1 ? this.state.eventTime1 : ""
+        
+        let start = new Date(this.state.eventDate + 'T00:00:00')
+        let end = ""
+        let allDay = true
+
+        if (eventTime1 !== "") {
+            start = new Date(this.state.eventDate + ' ' + this.state.eventTime1)
+            allDay = false
+        }
+
+        // Transform 
+        if (this.state.eventTime2) {
+            end = new Date(this.state.eventDate + ' ' + this.state.eventTime2)
+        }
+
+        let description = this.state.description ? this.state.description : ""
+
+        let hashString = this.stringToHash(this.props.user.uid + this.state.eventName 
+            + this.state.eventStart)
+
+        // Represents a single event object to add to Firebase
+        let calendarObject = {
+            title: this.state.eventName,
+            start: start,
+            end: end,
+            description: description,
+            id: hashString,
+            allDay: true
+        }
+
+        // Add 
+        this.setState({
+            calendarEvents: this.state.calendarEvents.concat({
+                title: this.state.eventName,
+                start: start,
+                end: end,
+                description: description,
+                id: hashString,
+                allDay: allDay
+            })
+        })
+
+        console.log(this.calendarComponentRef)
+
+        // Call controller
+        // createEvent(calendarObject, this.props.user.uid)
+    }
+
+    // Pre-Conditions: User clicks on edit button
+    // Post-Conditions: Updates calendar and sends updated information
+    // to Firebase
+    updateCalendarEvent(e) {
+        e.preventDefault()
+        // Need to edit Firebase value
+        // Remove this value from calendar object
+        // Re-add updated information
+    }
+
+    // Pre-Conditions: User clicks on remove button
+    // Post-Conditions: Updates calendar to remove event
+    // and removes information from Firebase
+    removeCalendarEvent(e) {
+        e.preventDefault()
+        // 
+        let eventID = this.stringToHash(this.props.user.uid + this.props.currentTitle 
+            + this.props.currentStart)
+        let calendarArray = this.state.calendarEvents
+
+        let newArray = deleteEvent(calendarArray, eventID, this.props.user.uid)
+
+        let id = this.calendarComponentRef.getEventById(eventID)
+        console.log(id)
+    }
+
+    // Event Actions
+
     handleEventClick = arg => {
         let eventEnd = ""
 
+        let eventStart = formatDate(arg.event.start, {
+            hour: 'numeric',
+            minute: '2-digit'
+        })
+
         if (arg.event.end) {
             eventEnd = formatDate(arg.event.end, {
-                month: "long",
-                year: 'numeric',
-                day: 'numeric',
-                weekday: 'long'
+                // month: "long",
+                // year: 'numeric',
+                // day: 'numeric',
+                // weekday: 'long'
+                hour: 'numeric',
+                minute: '2-digit'
             })
         }
 
@@ -74,7 +193,8 @@ export default class CalendarView extends Component {
             state.currentDescription = arg.event.extendedProps.description
             state.currentTitle = arg.event.title
             state.currentAttendees = arg.event.extendedProps.attendees
-            state.currentStart = formattedDate
+            state.currentDate = formattedDate
+            state.currentStart = eventStart
             state.currentEnd = eventEnd
             state.eventModal = "block"
             return state
@@ -154,6 +274,8 @@ export default class CalendarView extends Component {
         })
     }
 
+    // Forms
+
     // Pre-Conditions: + Add Event Button must have been clicked
     // Post-Conditions: Returns modal form for adding event
     addEventModalForm() {
@@ -208,13 +330,13 @@ export default class CalendarView extends Component {
                     </button>
                         <div className="modalContent">
                             <div>
-                                <input className="modalInput"
+                                <input className="modalInput" required
                                     onChange={(e) => this.handleChange(e)}
                                     id="eventName" placeholder="Event Name" type="text" name="eventName" />
                             </div>
                             <div>
                                 <label className="modalLabel"><b>Date</b></label>
-                                <input className="modalInput"
+                                <input className="modalInput" required
                                     onChange={(e) => this.handleChange(e)}
                                     type="date" name="eventDate" />
                             </div>
@@ -230,7 +352,7 @@ export default class CalendarView extends Component {
                             </div>
                             <div>
                                 <label className="modalLabel"><b>Location</b></label>
-                                <input className="modalInput"
+                                <input className="modalInput" value=""
                                     onChange={(e) => this.handleChange(e)}
                                     placeholder="Event Location" type="text" name="eventLocation" />
                             </div>
@@ -239,6 +361,7 @@ export default class CalendarView extends Component {
                                 <textarea maxlength="500" className="modalInput" placeholder="Enter a description"
                                     onChange={(e) => this.handleChange(e)}
                                     rows="4" cols="50"
+                                    value=""
                                     name="eventDescription" />
                             </div>
                             <div>
@@ -261,7 +384,9 @@ export default class CalendarView extends Component {
                                 {repeatingForm}
                             </div>
                             <div>
-                                <button className="save">
+                                <button 
+                                    onClick={(e) => this.addCalendarEvent(e)}
+                                    className="save">
                                     <b>Save</b>
                                 </button>
                             </div>
@@ -288,6 +413,7 @@ export default class CalendarView extends Component {
                             </button>
                         <EventView
                             editViewEventModalButton = {this.editViewEventModalButton}
+                            removeCalendarEvent = {this.removeCalendarEvent}
                             currentDescription={this.state.currentDescription} 
                             currentTitle = {this.state.currentTitle}
                             currentAttendees = {this.state.currentAttendees}
@@ -379,8 +505,6 @@ export default class CalendarView extends Component {
                     {calendar}
                 </div>
                 <div>
-                    {/* {addEventModalForm}
-                    {viewEventModal} */}
                     {addEventModalForm}
                     {viewModal}
                 </div>

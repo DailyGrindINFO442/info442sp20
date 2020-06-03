@@ -48,15 +48,15 @@ export default class AlertView extends Component {
 
     render() {
         let alerts = null;
-        let alertsList = this.props.user.alerts;
-        // How should we go about moving "critical" alerts to the front of the list?
-        for(let i = 0; i < alertsList.length; i++) {
-            if(alertsList[i].status == 'read') {
-                alerts += this.displayReadAlerts(alertsList[i]);
-            } else {
-                alerts += this.displayUnreadAlerts(alertsList[i]);
-            }
-        }
+        // let alertsList = this.props.user.alerts;
+        // // How should we go about moving "critical" alerts to the front of the list?
+        // for(let i = 0; i < alertsList.length; i++) {
+        //     if(alertsList[i].status == 'read') {
+        //         alerts += this.displayReadAlerts(alertsList[i]);
+        //     } else {
+        //         alerts += this.displayUnreadAlerts(alertsList[i]);
+        //     }
+        // }
         return (
             <div>
                 {alerts}      
