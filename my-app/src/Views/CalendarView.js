@@ -162,9 +162,6 @@ export default class CalendarView extends Component {
             }),
             addEventModal: "none"
         })
-
-        // // Call controller
-        createEvent(calendarObject, this.props.user.uid)
     }
 
     // Pre-Conditions: User clicks on edit button

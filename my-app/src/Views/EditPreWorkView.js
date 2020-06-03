@@ -114,6 +114,7 @@ export default class EditPreWorkView extends Component {
         e.preventDefault()
         this.setState((state) => {
             state.editItemModal = "block"
+            state.editItemName = ""
             return state
         })
     }
@@ -165,7 +166,8 @@ export default class EditPreWorkView extends Component {
                                 <input id="editName"
                                     onChange={(e) => this.handleChange(e)}
                                     placeholder="Edit Item Name"
-                                    name="editItemName"/>
+                                    name="editItemName"
+                                    value={this.state.editItemName}/>
                             </div>
                             <div id="saveRemoveButtons">
                                 <button
