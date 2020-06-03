@@ -159,7 +159,8 @@ export default class CalendarView extends Component {
                 location: location,
                 id: returnedID,
                 allDay: allDay
-            })
+            }),
+            addEventModal: "none"
         })
 
         // // Call controller
@@ -195,6 +196,7 @@ export default class CalendarView extends Component {
     updateArray(t) {
         this.setState((state) => {
             state.calendarEvents = t
+            state.eventModal = "none"
             return state
         })
     }
