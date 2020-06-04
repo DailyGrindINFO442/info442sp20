@@ -55,6 +55,7 @@ class App extends Component {
           {...this.state}/>} />
         <Route path="/profile" component={ProfileView} />
         <Route path="/alerts" component={AlertView} />
+        <Route path="/todo" render={() => <} />
         <Route path="/signin" render={() => <SignInView
           {...this.state}/>} />
         <Route path="/prework" render={() => <EditPreWorkView

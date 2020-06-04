@@ -4,7 +4,81 @@ import { retrieveListItem, createListItem, editListItem, removeListItem } from '
 
 
 export default class ToDoView extends Component {
-    
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            todolist: new Map(),
+            labels: new Map()
+        }
+    }
+
+    // Mount Functions
+     retrievePreWorkItems() {
+        let rootPath = firebase.database().ref('todo')
+
+        rootPath.once('value', (snapshot) => {
+            let info = snapshot.val()
+            if (info) {
+            }
+        })
+    }
+
+
+    // Event Handlers
+
+    addListItem(e) {
+        e.preventDefault()
+        let todolistItems = this.state.todolist
+
+        let preWorkItem = {
+            name: this.state.preWorkName,
+            color: this.state.color,
+            starred: false
+        }
+
+        let itemID = createRoutineItem(preWorkItem, this.props.user.uid)
+
+        checklistItems.set(itemID, preWorkItem)
+
+        this.setState((state) => {
+            this.state.checklistItems = checklistItems
+            return state
+        })
+    }
+
+    addItemModal() {
+        let content = (
+            <div className="modalBox"
+                style={{display: this.state.addItemModal}}>
+                <div>
+                    <form className="modalForm">
+                        <button
+                            onClick={(e) => this.closeAddItemModal(e)} 
+                            className="closeModal">
+                            X
+                        </button>
+                        <div className="modalContent">
+                            <div>
+                                <input className="modalInput" required
+                                    onChange={(e) => this.handleChange(e)}
+                                    placeholder="PreWork Name"
+                                    type="text"
+                                    name="preWorkName"
+                                />
+                            </div>
+                            <button
+                                onClick={(e) => this.addPreWorkItem(e)}>
+                                Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        )
+        return content
+    }
+
     // Pre-Conditions: ToDoView is loaded
     // Post-Conditions: Displays to do list
     displayToDo() {
@@ -17,13 +91,20 @@ export default class ToDoView extends Component {
     }
 
     render() {
+        let addItemModal = this.addItemModal()
+
         return (
-            <div>      
+            <div>
+                <div className="todolist">
+                </div>
+                <div className="modalItems">
+                    {addItemModal}
+                </div>      
             </div>
         )
     }
 }
 
-export default class ToDoItem extends Component {
+class ToDoItem extends Component {
 
 }
