@@ -17,9 +17,9 @@
     - **Verification**: No verification is needed because our team already determined that a web based application framework will be used for the build of our application.
 - [complete] 9 Responsive web pages will be used to adjust the layout and assets on the page to fit the user’s screen resolution
     - **Verification**: Manual tests will be conducted to verify that all 9 web pages are built and that they are able to adjust the layout and assets based on changes in user screen resolution. 
-- [?] Changing between web pages on DailyGrind will have 1 second or less response times
+- [Complete] Changing between web pages on DailyGrind will have 1 second or less response times
     - **Verification**: Automated testing to ensure that loading new pages will take less than one second. Also changes to the page triggered by user actions will take less than one second.
-- [complete?] Will adjust to mobile, small, medium, large, and extra large user screen sizes
+- [complete] Will adjust to mobile, small, medium, large, and extra large user screen sizes
     - **Verification**: Manual testing to verify that our application is formatted correctly for each screen size and app functions correctly on each screen size layout. 
 - [complete] System will be created with the React framework.
     - **Verification**: Code review will take place to ensure that the system, pages, and assets are built to the specifications of a React framework.  
@@ -40,11 +40,11 @@
     - **Verification**: Visual verification will be done to check if a sign in button is visible when the user is not signed in. A manual test will be done to see if clicking the button pulls up a log in window where the user can input their account information and log in.
 - [complete] When the user is signed into the site, the user will have an option to sign-out by navigating through the menu to the sign-out button. 
     - **Verification**: Visual verification will be done to see if a sign out button is visible when a user is logged in and a manual test will be done to see if clicking the button logs the user out, changing the button back to a sign-in button and clearing user specific information from the site.
-- [?] The user will be able to access settings, schedule, to-do lists, pre-work routines, profile, and breaks from the home page through a nav bar with clickable links to the respective pages.
+- [revised: the user will be able to access schedule, pre-work routines] The user will be able to access settings, schedule, to-do lists, pre-work routines, profile, and breaks from the home page through a nav bar with clickable links to the respective pages.
     - **Verification**: Visual verification will be done to make sure that the navigation bar displays 6 buttons labeled appropriately. Manual testing will be done to ensure that each of these buttons takes the user to the proper page. 
 
 ## Sign-In & Sign-Up
-- [revised: We are no longer allowing Google Sign-On, as we found it unnecessary in creating our solution] Users will be able to create an account by filling out a form or via Google 
+- [revised: We are no longer allowing Google Sign-On, as we found it unnecessary in creating our solution. Google Sign-On was originally intended to allow users to sync their Google Calendars with our application, but we were unable to access the necessary APIs to do so.] Users will be able to create an account by filling out a form or via Google 
     - [revised: We found no need to require a name at sign-up, only in Settings] The sign up form will require an email, password, and name. 
 
 - [complete] When the user is not signed in, the user will be able to sign in by clicking sign in on the navigation bar.
@@ -114,7 +114,7 @@
 
 ## Breaks
 ![schedule break](img/break2.JPG)
-- [impossible: feasibility of implementing notifcation based features was not doable without proper knowledge/experience of integrating web workers which no members had] When a user’s break is scheduled, it will pop up on the screen, allowing the user to either snooze it or start their break.
+- [[impossible: feasibility of implementing notifcation based features was not doable without proper knowledge/experience of integrating web workers which no members had.] When a user’s break is scheduled, it will pop up on the screen, allowing the user to either snooze it or start their break.
     - [incomplete: feasibility of implementing notifcation based features was not doable without proper knowledge/experience of integrating web workers which no members had] The pop up will be in the center of the screen with a message stating that it is time for a break and buttons to either snooze or start a break.
     - **Verification**: This will be manually tested by scheduling a break and receiving visual confirmation that a pop up with the two buttons appears at the designated time. 
 - [impossible: no known capabilities to block websites from our web-app, needs to be a web-browser extension as opposed to a web-app] If start is selected, user-selected work websites will be temporarily blocked and distraction websites unblocked until the break is complete. 
@@ -131,6 +131,8 @@
     - **Verification**: A manual test will be conducted by starting a breaks of various lengths and checking for visual confirmation of a pop up appearing at the right times. For example, if a ten minute break is scheduled to start at 4:30, a pop up should appear at 4:35 and 4:39.
 - [impossible: feasibility of implementing notifcation based features was not doable without proper knowledge/experience of integrating web workers which no members had] The size of the break notification at the top of their screen will be adjustable to avoid distractions, if they are logged in. 
     - **Verification**: Manual testing by changing the size of the notification in the user setting and receiving visual confirmation that the notification is smaller or larger. 
+
+[Note: no members of our team had experience with web workers and upon research we discovered that no one had the badwidth to learn enough to implement these features due to things like other coursework, jobs, and personal reasons.]
 
 ## Pre-Work Routines
 ![pre-work routine](img/routine.JPG)
@@ -200,6 +202,8 @@
     - **Verification**: Manual test of deleting an event to ensure it deletes the alert from the user’s account.
 - [impossible: feasibility of implementing notifcation based features was not doable without proper knowledge/experience of integrating web workers which no members had] The pop-up message will appear reminding them that once they delete an alert it will be gone forever, asking the user to confirm (yes) or deny (no) if they would like to delete the alert.
     - **Verification**: Visual inspection to ensure that the pop-up a) appears after clicking/tapping/etc. the trash icon and b) the two buttons do either delete or keep the alert, respectively.
+
+[Note: no members of our team had experience with web workers and upon research we discovered that no one had the badwidth to learn enough to implement these features due to things like other coursework, jobs, and personal reasons.]
 
 ## Profile
 - [incomplete: profiles were created but not with integration to profiles, alerts, notifications, photos, and organizations, therefore was taken out of the final solution] The navigation bar will have a button titled “Profile” that, when clicked, will take the user to the profile page.
