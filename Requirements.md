@@ -40,7 +40,7 @@
     - **Verification**: Visual verification will be done to check if a sign in button is visible when the user is not signed in. A manual test will be done to see if clicking the button pulls up a log in window where the user can input their account information and log in.
 - [complete] When the user is signed into the site, the user will have an option to sign-out by navigating through the menu to the sign-out button. 
     - **Verification**: Visual verification will be done to see if a sign out button is visible when a user is logged in and a manual test will be done to see if clicking the button logs the user out, changing the button back to a sign-in button and clearing user specific information from the site.
-- [?] The user will be able to access settings, schedule, to-do lists, pre-work routines, profile, and breaks from the home page through a nav bar with clickable links to the respective pages.
+- [incomplete] The user will be able to access settings, schedule, to-do lists, pre-work routines, profile, and breaks from the home page through a nav bar with clickable links to the respective pages.
     - **Verification**: Visual verification will be done to make sure that the navigation bar displays 6 buttons labeled appropriately. Manual testing will be done to ensure that each of these buttons takes the user to the proper page. 
 
 ## Sign-In & Sign-Up
@@ -49,7 +49,7 @@
 
 - [complete] When the user is not signed in, the user will be able to sign in by clicking sign in on the navigation bar.
     - **Verification**: Manual testing will be done by attempting to create and account by filling out and submitting the sign up form and signing in via Google. If successful, a new user’s information will be added to the Firebase database.
-- [Revised] User cookies will time out after 48 hours.
+- [incomplete] User cookies will time out after 48 hours.
     - **Verification**: A code review will be done to check that the expiration time of the cookie is set to 48 hours and that the time is being passed into the cookie expiration function
 
 ## Settings
@@ -74,7 +74,7 @@
     - **Verification**: Manual test to ensure that a new event form model appears when the new event plus icon is triggered by a user
 - [complete] Clicking this button will open up a new event form modal for users to input information about the event containing the following specifications: 
     1. [revised: Did not think it was needed as the user will know when that they are creating an event and the input for title
-       name is displayed as a placeholder] 
+       name is displayed as a placeholder] The title of “Create New Event” is at the top of the form, center-aligned in 16 pt font
     2. [complete] It will display the text “Event Name” aligned left with a text input field to the right of Event Name
     3. [complete] It will display the text “Event Date” below Event Name aligned left with a text input field to the right of Event Date. 
         - The input will be constrained to the format “MM/DD/YYYY”
